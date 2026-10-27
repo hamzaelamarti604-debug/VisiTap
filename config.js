@@ -217,7 +217,7 @@ const PROFILES = [
      pas le profil : l'adresse et le QR code imprimés en dépendent.
      =================================================================== */
   {
-    slug: "hamza-elamarti",                  // NE PAS MODIFIER : adresse et QR code imprimés
+    slug: "profil-01",                  // NE PAS MODIFIER : adresse et QR code imprimés
     firstName: "hamza",
     lastName: "elamarti",
     profession: "medecin cardiologue",
