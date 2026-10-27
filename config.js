@@ -217,17 +217,17 @@ const PROFILES = [
      pas le profil : l'adresse et le QR code imprimés en dépendent.
      =================================================================== */
   {
-    slug: "profil-01",                  // NE PAS MODIFIER : adresse et QR code imprimés
-    firstName: "Profil",
-    lastName: "01",
-    profession: "Carte VisiTap disponible",
+    slug: "hamza-elamarti",                  // NE PAS MODIFIER : adresse et QR code imprimés
+    firstName: "hamza",
+    lastName: "elamarti",
+    profession: "medecin cardiologue",
     company: "",
     photo: "",
     description: "Profil fictif en attente d'attribution. Informations à remplacer par celles du client.",
 
-    phone: "", email: "", address: "", mapsUrl: "",
+    phone: "0656916627", email: "hamzaelamarti604@gmail.com", address: "", mapsUrl: "",
 
-    whatsapp: "", whatsappMessage: "",
+    whatsapp: "0656916627", whatsappMessage: "",
     website: "",
     appointmentUrl: "", appointmentLabel: "",
     googleReviewsUrl: "",
