@@ -189,7 +189,26 @@ const PROFILES = [
 
     theme: "emeraude"
   },
+   
+  {
+    slug: "salma-amarti",
+    firstName: "Salma",
+    lastName: "el amarti",
+    profession: "Dermatologue",
+    company: "",
+    photo: "",
+    description: "Profil de démonstration aux données fictives. Dermatologie médicale et esthétique.",
 
+    phone: "",
+    email: "salma@example.com",
+    address: "Hay Riad, Rabat",
+
+    appointmentUrl: "https://example.com/rdv",
+    instagram: "@dr.salma.demo",
+
+    theme: "emeraude"
+  },
+   
   {
     // Profil minimal : seuls les éléments renseignés s'affichent
     slug: "lina-hair",
