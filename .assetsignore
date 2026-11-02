@@ -1,0 +1,8 @@
+.git
+.github
+wrangler.jsonc
+vercel.json
+README.md
+LISEZMOI.txt
+node_modules
+.assetsignore

@@ -1,0 +1,10 @@
+{
+  // Configuration Cloudflare (remplace vercel.json sur Cloudflare)
+  "name": "visitap",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./",
+    // Toute adresse /nom-du-profil qui n'est pas un fichier renvoie index.html
+    "not_found_handling": "single-page-application"
+  }
+}
