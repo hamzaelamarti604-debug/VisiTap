@@ -53,7 +53,7 @@ const BRAND = {
   // Domaine définitif SANS « / » final, ex. "https://visitap.vercel.app".
   // Utilisé pour le QR code, le partage et la fiche contact : c'est aussi
   // l'adresse à programmer dans les puces NFC. Vide = adresse actuelle du site.
-  baseUrl: "",
+  baseUrl: "https://visitap.carte-ma.workers.dev",
 
   // Indicatif ajouté aux numéros WhatsApp saisis au format local
   // (ex. "0600000000" devient "212600000000"). Vide = désactivé.
