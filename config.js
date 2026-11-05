@@ -44,6 +44,18 @@
 
      theme: "noir"
    },
+
+   Champs facultatifs supplémentaires (à ajouter seulement si besoin) :
+     nameAr: "",          // nom en arabe, affiché sous le nom
+     descriptionAr: "",   // description en arabe, sous la description
+     hours: [             // horaires
+       { days: "Lundi – Vendredi", time: "9h00 – 19h00" },
+       { days: "Dimanche", time: "Fermé", note: "Sur rendez-vous" }
+     ],
+     team: {              // bouton qui ouvre la liste de l'équipe (WhatsApp)
+       label: "Écrire à l'équipe", subtitle: "", message: "",
+       members: [ { name: "Prénom", role: "Fonction", whatsapp: "06..." } ]
+     },
    ===================================================================== */
 
 const BRAND = {
@@ -75,10 +87,12 @@ const PROFILES = [
   /* ===================================================================
      PROFILS DE DÉMONSTRATION (personnes et coordonnées FICTIVES)
      -------------------------------------------------------------------
-     sarah-benali, dr-yassine, youssef-alaoui, salma-idrissi, lina-hair :
+     sarah-benali, youssef-alaoui, salma-idrissi, lina-hair :
      exemples montrant toutes les possibilités du design. Ils ne sont liés
      à aucune carte imprimée : vous pouvez les supprimer avant la mise en
      production sans aucun risque pour les profils profil-01 à profil-50.
+     ATTENTION : bijouterie-hafsa n'est pas une démo, c'est la vraie carte
+     de Bijouterie Hafsa (ancien profil démo dr-yassine). Ne pas le supprimer.
      =================================================================== */
   {
     // Profil complet — identique à l'aperçu validé (preview.html)
@@ -116,30 +130,59 @@ const PROFILES = [
   },
 
   {
-    slug: "dr-yassine",
-    firstName: "Yassine",
-    lastName: "Amrani",
-    profession: "Médecin généraliste",
-    company: "Cabinet médical Amrani",
-    photo: "",
-    description: "Profil de démonstration aux données fictives. Consultations de médecine générale, suivi des maladies chroniques et prévention.",
+    // Bijouterie Hafsa (Meknès) — carte cadeau de la boutique
+    slug: "bijouterie-hafsa",
+    firstName: "Bijouterie",
+    lastName: "Hafsa",
+    nameAr: "مجوهرات حفصة",
+    profession: "L'élégance au quotidien",
+    company: "",
+    photo: "/photos/bijouterie-hafsa.jpg",
+    description: "Bijoux en or et parures de mariage, pour les grands jours comme pour chaque jour. Venez découvrir nos collections et laissez nos conseillères vous guider.",
+    descriptionAr: "مجوهرات من الذهب وأطقم الأعراس، للمناسبات الكبرى كما لكل يوم. تفضّلوا لاكتشاف مجموعاتنا، ومستشاراتنا في خدمتكم لإرشادكم.",
 
-    phone: "+212 600 000 005",
-    email: "cabinet@example.com",
-    address: "Rue Oued Fès, Agdal, Rabat",
-    mapsUrl: "",
+    phone: "+212 6 61 69 95 83",
+    email: "z.bettahi@bijouteriehafsa.ma",
+    address: "183 Av. Mellah, Meknès",
+    mapsUrl: "https://maps.app.goo.gl/vwpiqd9VnBin7n7F6",
 
-    whatsapp: "",
+    whatsapp: "0661699583",
+    whatsappMessage: "Bonjour, je vous contacte depuis votre carte Bijouterie Hafsa.",
     website: "",
-    appointmentUrl: "https://example.com/agenda",
-    appointmentLabel: "Prendre rendez-vous",
-    googleReviewsUrl: "",
+    appointmentUrl: "",
+    appointmentLabel: "",
+    googleReviewsUrl: "https://search.google.com/local/writereview?placeid=ChIJqZLK9WdboA0RclBcSUqgtjA",
 
-    instagram: "", facebook: "", tiktok: "", linkedin: "",
-    youtube: "", x: "", snapchat: "", pinterest: "",
+    instagram: "bijouterie_hafsa",
+    facebook: "https://www.facebook.com/share/1NDsF7PaMN/",
+    tiktok: "bijouterie_hafsa_",
+    youtube: "https://www.youtube.com/@bijouteriehafsaofficiel7142",
+    linkedin: "", x: "", snapchat: "", pinterest: "",
     otherSocials: [],
 
-    theme: "ivoire"
+    hours: [
+      { days: "Lundi – Jeudi", time: "9h30 – 20h30" },
+      { days: "Vendredi", time: "Fermé", note: "Sur rendez-vous" },
+      { days: "Samedi – Dimanche", time: "9h30 – 20h30" }
+    ],
+
+    team: {
+      label: "Écrire à une conseillère",
+      subtitle: "Choisissez la personne à contacter",
+      message: "Bonjour, je vous contacte depuis la carte Bijouterie Hafsa.",
+      members: [
+        { name: "Zakaria", role: "Gérant", whatsapp: "0661699583" },
+        { name: "Samia", role: "Conseillère bijoux", whatsapp: "0674358833" },
+        { name: "Fatima-Zahra", role: "Conseillère bijoux", whatsapp: "0645453704" },
+        { name: "Youssra", role: "Conseillère bijoux", whatsapp: "0770812243" },
+        { name: "Israe", role: "Conseillère bijoux", whatsapp: "0664030509" },
+        { name: "Salma", role: "Conseillère bijoux", whatsapp: "0614046242" },
+        { name: "Kabira", role: "Conseillère bijoux", whatsapp: "0631187639" },
+        { name: "Laila", role: "Conseillère bijoux", whatsapp: "0770834823" }
+      ]
+    },
+
+    theme: "bordeaux"
   },
 
   {

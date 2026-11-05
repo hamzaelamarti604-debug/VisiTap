@@ -154,9 +154,10 @@ Photos : déposez-les dans `photos/` (carrées, ~800 px, JPEG) et indiquez
 (lien « Créer ma carte VisiTap »), `homeSlug` (profil affiché sur `/`), `showQr`.
 
 ### Profils de démonstration
-`sarah-benali`, `dr-yassine`, `youssef-alaoui`, `salma-idrissi`, `lina-hair` sont des
+`sarah-benali`, `youssef-alaoui`, `salma-idrissi`, `lina-hair` sont des
 exemples **fictifs**, signalés comme tels sur leur page. Ils ne sont liés à aucune carte :
 vous pouvez les supprimer de `config.js` avant la mise en production.
+(`bijouterie-hafsa`, ancien profil démo `dr-yassine`, est une vraie carte client : ne pas le supprimer.)
 
 ---
 

@@ -301,6 +301,20 @@ dialog.qr[open]{animation:pop .45s var(--ease)}
 .state p.txt{margin:0;max-width:32ch;color:var(--muted);line-height:1.65}
 .state .ghost{flex:none;margin-top:6px;padding:0 22px}
 .loader{margin:42vh auto 0;width:28px;height:28px;border-radius:50%;border:2px solid var(--line-strong);border-top-color:var(--gold);animation:spin .9s linear infinite}
+/* ---------- Champs optionnels : arabe, horaires, équipe ---------- */
+:root{--arabic:"Amiri","Noto Naskh Arabic","Geeza Pro","Times New Roman",serif}
+.name-ar{margin:10px 0 0;font-family:var(--arabic);font-weight:700;font-size:30px;line-height:1.35;color:var(--gold)}
+.desc-ar{margin:12px auto 0;max-width:34ch;font-family:var(--arabic);font-size:18px;line-height:1.85;color:var(--muted)}
+.hours{list-style:none;margin:0;padding:4px 0}
+.hours li{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:13px 18px;font-size:14.5px;line-height:1.4}
+.hours li + li{border-top:1px solid var(--line)}
+.hours .hd{color:var(--text);font-weight:600}
+.hours .ht{color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.hours .hn{display:block;margin-top:2px;font-size:12px;color:var(--gold)}
+button.row{width:100%;text-align:left}
+.row .ri .tini{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1}
+dialog.team .dlg{max-height:calc(100dvh - 48px);overflow-y:auto}
+dialog.team .card{text-align:left}
 </style>
 </head>
 <body>
@@ -350,6 +364,8 @@ dialog.qr[open]{animation:pop .45s var(--ease)}
   };
 
 
+  ICONS.users = '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>';
+  ICONS.clock = '<circle cx="12" cy="12" r="9.5"/><path d="M12 7v5l3 2"/>';
   ICONS.touch = '<path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V9a1.5 1.5 0 0 1 3 0v2"/><path d="M15 10.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-.5a6 6 0 0 1-4.9-2.5L4.2 15a1.5 1.5 0 0 1 2.4-1.8L9 15"/>';
 
   var SOCIALS = [
@@ -850,17 +866,77 @@ dialog.qr[open]{animation:pop .45s var(--ease)}
   function rowsCard(rows) {
     var card = el('div', { class: 'card' });
     rows.forEach(function (r) {
-      card.appendChild(link(r[0], { class: 'row' + (r[4] ? ' featured' : '') },
+      var parts = [
         el('span', { class: 'ri' }, icon(r[1])),
         el('span', { class: 'rt' }, el('span', { class: 'rl' }, r[2]), el('span', { class: 'rs' }, r[3])),
-        el('span', { class: 'ra' }, icon('arrow'))));
+        el('span', { class: 'ra' }, icon('arrow'))];
+      if (typeof r[0] === 'function') {
+        // Ligne-bouton (ouvre une fenêtre au lieu d'un lien)
+        var b = el('button', { class: 'row' + (r[4] ? ' featured' : ''), type: 'button', 'aria-haspopup': 'dialog' }, parts);
+        b.addEventListener('click', r[0]);
+        card.appendChild(b);
+      } else {
+        card.appendChild(link(r[0], { class: 'row' + (r[4] ? ' featured' : '') }, parts));
+      }
     });
     return card;
+  }
+
+  /* ---------- Champs optionnels : équipe (fenêtre WhatsApp) et horaires ---------- */
+  function teamMembers(team) {
+    var list = (team && Array.isArray(team.members)) ? team.members : [];
+    var msg = str(team && team.message);
+    return list.map(function (m) {
+      if (!m) return null;
+      var d = waDigits(m.whatsapp);
+      if (!str(m.name) || !d) return null;
+      return { name: str(m.name), role: str(m.role), href: 'https://wa.me/' + d + (msg ? '?text=' + encodeURIComponent(msg) : '') };
+    }).filter(Boolean);
+  }
+  function openTeam(team, members) {
+    var closeBtn = el('button', { class: 'dlg-close', type: 'button', 'aria-label': 'Fermer' }, icon('close'));
+    var card = el('div', { class: 'card' });
+    members.forEach(function (m) {
+      card.appendChild(link(m.href, { class: 'row', 'aria-label': 'WhatsApp — ' + m.name },
+        el('span', { class: 'ri' }, el('span', { class: 'tini', 'aria-hidden': 'true' }, m.name.charAt(0).toUpperCase())),
+        el('span', { class: 'rt' }, el('span', { class: 'rl' }, m.name), m.role ? el('span', { class: 'rs' }, m.role) : null),
+        el('span', { class: 'ra' }, icon('whatsapp'))));
+    });
+    var dlg = el('dialog', { class: 'qr team', 'aria-labelledby': 'team-title' },
+      el('div', { class: 'dlg' }, closeBtn,
+        el('p', { class: 'eyebrow', id: 'team-title' }, str(team.eyebrow) || 'Notre équipe'),
+        el('p', { class: 'dname' }, str(team.label) || 'Écrire à l’équipe'),
+        card));
+    document.body.appendChild(dlg);
+    var close = function () { if (dlg.open && dlg.close) dlg.close(); dlg.remove(); };
+    closeBtn.addEventListener('click', close);
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); });
+    dlg.addEventListener('cancel', function (e) { e.preventDefault(); close(); });
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+  }
+  function hoursCard(hours) {
+    var list = Array.isArray(hours) ? hours : [];
+    var ul = el('ul', { class: 'hours' }), n = 0;
+    list.forEach(function (h) {
+      if (!h || !str(h.days)) return;
+      ul.appendChild(el('li', null,
+        el('span', { class: 'hd' }, str(h.days)),
+        el('span', { class: 'ht' }, str(h.time), str(h.note) ? el('span', { class: 'hn' }, str(h.note)) : null)));
+      n++;
+    });
+    return n ? el('div', { class: 'card' }, ul) : null;
+  }
+  function loadArabicFont() {
+    if (document.getElementById('font-ar')) return;
+    var l = el('link', { id: 'font-ar', rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap' });
+    document.head.appendChild(l);
   }
 
   /* ---------- Carte de visite ---------- */
   function renderProfile(p, slug) {
     var name = fullName(p, slug), profession = str(p.profession), company = str(p.company), description = str(p.description), url = profileUrl(slug);
+    var nameAr = str(p.nameAr), descriptionAr = str(p.descriptionAr);
+    if (nameAr || descriptionAr) loadArabicFont();
     applyTheme(str(p.theme));
     document.title = name + (profession ? ' — ' + profession : '') + ' | ' + (str(brand.name) || 'VisiTap');
     setMeta('description', description || (name + (profession ? ', ' + profession : '') + ' — carte VisiTap.'));
@@ -882,9 +958,11 @@ dialog.qr[open]{animation:pop .45s var(--ease)}
     IN(el('section', { class: 'hero' },
       el('div', { class: 'portrait' }, el('span', { class: 'halo', 'aria-hidden': 'true' }), el('span', { class: 'ring', 'aria-hidden': 'true' }), photoBox),
       el('h1', { class: 'name' }, name),
+      nameAr ? el('p', { class: 'name-ar', lang: 'ar', dir: 'rtl' }, nameAr) : null,
       profession ? el('p', { class: 'role' }, profession) : null,
       company ? el('p', { class: 'company' }, company) : null,
-      description ? el('p', { class: 'desc' }, description) : null));
+      description ? el('p', { class: 'desc' }, description) : null,
+      descriptionAr ? el('p', { class: 'desc-ar', lang: 'ar', dir: 'rtl' }, descriptionAr) : null));
 
     // Ajouter aux contacts
     var cta = el('button', { class: 'cta', type: 'button' }, icon('userPlus'), el('span', null, 'Ajouter aux contacts'));
@@ -900,11 +978,17 @@ dialog.qr[open]{animation:pop .45s var(--ease)}
     if (rdv) rows.push([rdv, 'calendar', str(p.appointmentLabel) || 'Prendre rendez-vous', 'Réserver un créneau en ligne', true]);
     var wa = waHref(p);
     if (wa) rows.push([wa, 'whatsapp', 'WhatsApp', 'Écrire un message']);
+    var team = (p.team && typeof p.team === 'object') ? p.team : null, members = teamMembers(team);
+    if (members.length) rows.push([function () { openTeam(team, members); }, 'users', str(team.label) || 'Écrire à l’équipe', str(team.subtitle) || (members.length + ' contacts WhatsApp')]);
     var web = safeUrl(p.website);
     if (web) rows.push([web, 'globe', 'Site web', host(web)]);
     var rev = safeUrl(p.googleReviewsUrl);
     if (rev) rows.push([rev, 'star', 'Avis Google', 'Consulter ou laisser un avis']);
     if (rows.length) IN(el('section', { 'aria-label': 'Services' }, stitle('Services'), rowsCard(rows)));
+
+    // Horaires (facultatif)
+    var hc = hoursCard(p.hours);
+    if (hc) IN(el('section', { 'aria-label': 'Horaires' }, stitle('Horaires'), hc));
 
     // Réseaux (grille)
     var socials = [];
