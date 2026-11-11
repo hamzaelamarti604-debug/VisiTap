@@ -315,6 +315,23 @@ button.row{width:100%;text-align:left}
 .row .ri .tini{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1}
 dialog.team .dlg{max-height:calc(100dvh - 48px);overflow-y:auto}
 dialog.team .card{text-align:left}
+/* ---------- Champs optionnels : galerie, étapes, garanties ---------- */
+.gallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:2px 20px 10px;scroll-padding:0 20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gallery::-webkit-scrollbar{display:none}
+.gallery figure{flex:0 0 74%;margin:0;scroll-snap-align:start;position:relative;aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;background:var(--bg-2);border:1px solid var(--line);box-shadow:var(--shadow)}
+.gallery img{display:block;width:100%;height:100%;object-fit:cover}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 16px 14px;font-size:13.5px;font-weight:600;letter-spacing:.01em;color:#fff;background:linear-gradient(180deg,transparent,rgba(0,0,0,.62))}
+.ghint{margin:2px 0 0;text-align:center;font-size:11.5px;color:var(--faint)}
+.steps{list-style:none;margin:0;padding:4px 0}
+.steps li{display:flex;align-items:center;gap:14px;padding:14px 16px;font-size:14.5px;line-height:1.45;color:var(--text)}
+.steps li + li{border-top:1px solid var(--line)}
+.steps .sn{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-family:var(--sans);font-weight:700;font-size:13.5px;line-height:1;font-variant-numeric:lining-nums tabular-nums;color:var(--on-gold);background:var(--gold-grad)}
+.badges{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.badge{display:flex;align-items:center;gap:10px;min-height:58px;padding:12px 14px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(var(--ink-rgb),.045),rgba(var(--ink-rgb),.018));font-size:13px;font-weight:600;line-height:1.3;color:var(--text)}
+.badge .bi{flex:none;width:30px;height:30px;border-radius:10px;display:grid;place-items:center;color:var(--gold);background:var(--gold-soft);border:1px solid rgba(var(--gold-rgb),.14)}
+.badge .bi .ic{width:16px;height:16px}
+.badge .bs{display:block;margin-top:1px;font-size:11.5px;font-weight:500;color:var(--muted)}
+a.badge{transition:background .3s var(--ease)}
 </style>
 </head>
 <body>
@@ -366,6 +383,10 @@ dialog.team .card{text-align:left}
 
   ICONS.users = '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>';
   ICONS.clock = '<circle cx="12" cy="12" r="9.5"/><path d="M12 7v5l3 2"/>';
+  ICONS.check = '<circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.6 2.6L16.2 9.5"/>';
+  ICONS.truck = '<path d="M1.5 6.5h12v9h-12z"/><path d="M13.5 9.5h4l3 3.2v2.8h-7"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>';
+  ICONS.wrench = '<path d="M14.7 6.3a4 4 0 0 0 5 5l-8.4 8.4a2.1 2.1 0 0 1-3-3z"/><path d="M14.7 6.3L17 4l3 3-2.3 2.3"/>';
+  ICONS.chat = '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/>';
   ICONS.touch = '<path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V9a1.5 1.5 0 0 1 3 0v2"/><path d="M15 10.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-.5a6 6 0 0 1-4.9-2.5L4.2 15a1.5 1.5 0 0 1 2.4-1.8L9 15"/>';
 
   var SOCIALS = [
@@ -926,6 +947,41 @@ dialog.team .card{text-align:left}
     });
     return n ? el('div', { class: 'card' }, ul) : null;
   }
+  function galleryBlock(g) {
+    var list = Array.isArray(g) ? g : [], box = el('div', { class: 'gallery', role: 'list' }), n = 0;
+    list.forEach(function (it) {
+      var src = typeof it === 'string' ? it : str(it && it.src), cap = typeof it === 'string' ? '' : str(it && it.caption);
+      var u = safeUrl(src);
+      if (!u) return;
+      box.appendChild(el('figure', { role: 'listitem' },
+        el('img', { src: u, alt: cap || 'Photo', loading: n < 2 ? 'eager' : 'lazy', decoding: 'async' }),
+        cap ? el('figcaption', null, cap) : null));
+      n++;
+    });
+    return n ? [box, n > 1 ? el('p', { class: 'ghint' }, 'Faites glisser pour voir plus →') : null] : null;
+  }
+  function stepsCard(steps) {
+    var list = Array.isArray(steps) ? steps : [], ol = el('ol', { class: 'steps' }), n = 0;
+    list.forEach(function (s) {
+      var t = str(s);
+      if (!t) return;
+      n++;
+      ol.appendChild(el('li', null, el('span', { class: 'sn', 'aria-hidden': 'true' }, String(n)), el('span', null, t)));
+    });
+    return n ? el('div', { class: 'card' }, ol) : null;
+  }
+  function badgesGrid(badges) {
+    var list = Array.isArray(badges) ? badges : [], grid = el('div', { class: 'badges' }), n = 0;
+    list.forEach(function (b) {
+      if (!b || !str(b.label)) return;
+      var ic = ICONS[str(b.icon)] ? str(b.icon) : 'check';
+      var inner = [el('span', { class: 'bi' }, icon(ic)), el('span', null, str(b.label), str(b.sub) ? el('span', { class: 'bs' }, str(b.sub)) : null)];
+      var u = safeUrl(b.url);
+      grid.appendChild(u ? link(u, { class: 'badge' }, inner) : el('div', { class: 'badge' }, inner));
+      n++;
+    });
+    return n ? grid : null;
+  }
   function loadArabicFont() {
     if (document.getElementById('font-ar')) return;
     var l = el('link', { id: 'font-ar', rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap' });
@@ -977,14 +1033,29 @@ dialog.team .card{text-align:left}
     var rdv = safeUrl(p.appointmentUrl);
     if (rdv) rows.push([rdv, 'calendar', str(p.appointmentLabel) || 'Prendre rendez-vous', 'Réserver un créneau en ligne', true]);
     var wa = waHref(p);
-    if (wa) rows.push([wa, 'whatsapp', 'WhatsApp', 'Écrire un message']);
+    if (wa) rows.push([wa, 'whatsapp', str(p.whatsappLabel) || 'WhatsApp', str(p.whatsappSubtitle) || 'Écrire un message']);
     var team = (p.team && typeof p.team === 'object') ? p.team : null, members = teamMembers(team);
     if (members.length) rows.push([function () { openTeam(team, members); }, 'users', str(team.label) || 'Écrire à l’équipe', str(team.subtitle) || (members.length + ' contacts WhatsApp')]);
+    // Boutons supplémentaires (facultatif) : actions: [{ label, sub, url, icon }]
+    (Array.isArray(p.actions) ? p.actions : []).forEach(function (a) {
+      if (!a || !str(a.label)) return;
+      var u = safeUrl(a.url);
+      if (!u) return;
+      rows.push([u, ICONS[str(a.icon)] ? str(a.icon) : 'link', str(a.label), str(a.sub) || host(u)]);
+    });
     var web = safeUrl(p.website);
     if (web) rows.push([web, 'globe', 'Site web', host(web)]);
     var rev = safeUrl(p.googleReviewsUrl);
     if (rev) rows.push([rev, 'star', 'Avis Google', 'Consulter ou laisser un avis']);
     if (rows.length) IN(el('section', { 'aria-label': 'Services' }, stitle('Services'), rowsCard(rows)));
+
+    // Galerie, étapes, garanties (facultatif)
+    var gb = galleryBlock(p.gallery);
+    if (gb) IN(el('section', { 'aria-label': 'Galerie' }, stitle(str(p.galleryTitle) || 'Galerie'), gb));
+    var sc = stepsCard(p.steps);
+    if (sc) IN(el('section', { 'aria-label': 'Étapes' }, stitle(str(p.stepsTitle) || 'Comment commander'), sc));
+    var bg = badgesGrid(p.badges);
+    if (bg) IN(el('section', { 'aria-label': 'Garanties' }, stitle(str(p.badgesTitle) || 'Nos garanties'), bg));
 
     // Horaires (facultatif)
     var hc = hoursCard(p.hours);

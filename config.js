@@ -186,6 +186,68 @@ const PROFILES = [
   },
 
   {
+    // Zaman Horlogerie (Rabat) — vraie carte client, ne pas supprimer
+    slug: "zaman-horlogerie",
+    firstName: "Zaman",
+    lastName: "Horlogerie",
+    profession: "Montres vintage originales",
+    company: "",
+    photo: "/photos/zaman-logo.jpg",
+    description: "Des montres vintage authentiques, sélectionnées une à une : Seiko, Orient, Citizen, Junghans… Basés à Rabat, livraison gratuite.",
+
+    phone: "+212 6 64 21 24 57",
+    email: "",
+    address: "",
+    mapsUrl: "",
+
+    whatsapp: "0664212457",
+    whatsappLabel: "Commander sur WhatsApp",
+    whatsappSubtitle: "Réponse rapide",
+    whatsappMessage: "Bonjour, je suis intéressé(e) par une de vos montres.",
+    website: "",
+    appointmentUrl: "",
+    appointmentLabel: "",
+    googleReviewsUrl: "",
+
+    actions: [
+      { label: "Commander en DM Instagram", sub: "Écrivez-nous en message privé", url: "https://ig.me/m/zaman_1953_ma", icon: "chat" },
+      { label: "Voir toutes nos montres", sub: "@zaman_1953_ma sur Instagram", url: "https://www.instagram.com/zaman_1953_ma", icon: "instagram" }
+    ],
+
+    galleryTitle: "Quelques pièces",
+    gallery: [
+      { src: "/photos/zaman/1.jpg", caption: "Carl Edmond" },
+      { src: "/photos/zaman/2.jpg", caption: "Seiko 5 · Automatique" },
+      { src: "/photos/zaman/3.jpg", caption: "Junghans" },
+      { src: "/photos/zaman/4.jpg", caption: "Seiko Quartz" },
+      { src: "/photos/zaman/5.jpg", caption: "Seiko Quartz" },
+      { src: "/photos/zaman/6.jpg", caption: "Seiko 5 · Automatique" }
+    ],
+
+    stepsTitle: "Comment commander",
+    steps: [
+      "Choisissez votre montre sur notre Instagram",
+      "Écrivez-nous en DM ou sur WhatsApp",
+      "Réservez-la avec un acompte",
+      "Recevez-la chez vous, livraison gratuite"
+    ],
+
+    badgesTitle: "Nos garanties",
+    badges: [
+      { label: "100 % original", icon: "check" },
+      { label: "Livraison gratuite", icon: "truck" },
+      { label: "Basé à Rabat", icon: "pin" },
+      { label: "Réparation & entretien", sub: "@dr.watch.ma", url: "https://www.instagram.com/dr.watch.ma", icon: "wrench" }
+    ],
+
+    instagram: "zaman_1953_ma",
+    facebook: "", tiktok: "", linkedin: "", youtube: "", x: "", snapchat: "", pinterest: "",
+    otherSocials: [],
+
+    theme: "ivoire"
+  },
+
+  {
     slug: "youssef-alaoui",
     firstName: "Youssef",
     lastName: "Alaoui",

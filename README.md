@@ -157,7 +157,7 @@ Photos : déposez-les dans `photos/` (carrées, ~800 px, JPEG) et indiquez
 `sarah-benali`, `youssef-alaoui`, `salma-idrissi`, `lina-hair` sont des
 exemples **fictifs**, signalés comme tels sur leur page. Ils ne sont liés à aucune carte :
 vous pouvez les supprimer de `config.js` avant la mise en production.
-(`bijouterie-hafsa`, ancien profil démo `dr-yassine`, est une vraie carte client : ne pas le supprimer.)
+(`bijouterie-hafsa`, ancien profil démo `dr-yassine`, et `zaman-horlogerie` sont de vraies cartes client : ne pas les supprimer.)
 
 ---
 
