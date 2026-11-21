@@ -387,6 +387,7 @@ a.badge{transition:background .3s var(--ease)}
   ICONS.truck = '<path d="M1.5 6.5h12v9h-12z"/><path d="M13.5 9.5h4l3 3.2v2.8h-7"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>';
   ICONS.wrench = '<path d="M14.7 6.3a4 4 0 0 0 5 5l-8.4 8.4a2.1 2.1 0 0 1-3-3z"/><path d="M14.7 6.3L17 4l3 3-2.3 2.3"/>';
   ICONS.chat = '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/>';
+  ICONS.telegram = '<path d="M21.5 3.5 2.8 10.7c-.9.4-.9 1.6 0 1.9l4.6 1.6 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.5 4.6 3.4c.6.4 1.4.1 1.6-.6L22.9 5c.2-1-.6-1.8-1.4-1.5z"/><path d="M7.4 14.2 18 7.2l-8 8.3"/>';
   ICONS.touch = '<path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V9a1.5 1.5 0 0 1 3 0v2"/><path d="M15 10.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-.5a6 6 0 0 1-4.9-2.5L4.2 15a1.5 1.5 0 0 1 2.4-1.8L9 15"/>';
 
   var SOCIALS = [
@@ -1040,6 +1041,12 @@ a.badge{transition:background .3s var(--ease)}
     (Array.isArray(p.actions) ? p.actions : []).forEach(function (a) {
       if (!a || !str(a.label)) return;
       var u = safeUrl(a.url);
+      // Sans lien mais avec « copy » : la ligne copie le texte (ex. numéro Botim)
+      if (!u && str(a.copy)) {
+        var cp = str(a.copy), msg = str(a.toast) || 'Copié';
+        rows.push([function () { copy(cp).then(function (ok) { if (ok) toast(msg); }); }, ICONS[str(a.icon)] ? str(a.icon) : 'chat', str(a.label), str(a.sub) || cp]);
+        return;
+      }
       if (!u) return;
       rows.push([u, ICONS[str(a.icon)] ? str(a.icon) : 'link', str(a.label), str(a.sub) || host(u)]);
     });
@@ -1047,7 +1054,8 @@ a.badge{transition:background .3s var(--ease)}
     if (web) rows.push([web, 'globe', 'Site web', host(web)]);
     var rev = safeUrl(p.googleReviewsUrl);
     if (rev) rows.push([rev, 'star', 'Avis Google', 'Consulter ou laisser un avis']);
-    if (rows.length) IN(el('section', { 'aria-label': 'Services' }, stitle('Services'), rowsCard(rows)));
+    var svcT = str(p.servicesTitle) || 'Services';
+    if (rows.length) IN(el('section', { 'aria-label': svcT }, stitle(svcT), rowsCard(rows)));
 
     // Galerie, étapes, garanties (facultatif)
     var gb = galleryBlock(p.gallery);

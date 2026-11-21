@@ -186,6 +186,44 @@ const PROFILES = [
   },
 
   {
+    // Mohamed Soufiane El Ouahabi — commerce — vraie carte client, ne pas supprimer
+    slug: "soufiane-el-ouahabi",
+    firstName: "Mohamed Soufiane",
+    lastName: "El Ouahabi",
+    profession: "Commerce",
+    company: "",
+    photo: "/photos/soufiane-el-ouahabi.jpg",
+    description: "N'hésitez pas à me contacter : je vous réponds rapidement sur WhatsApp, Telegram et Botim.",
+
+    phone: "+212 7 09 32 55 87",
+    email: "elouahabimohamedsofian@gmail.com",
+    address: "",
+    mapsUrl: "",
+
+    whatsapp: "0719142580",
+    whatsappLabel: "Écrire sur WhatsApp",
+    whatsappSubtitle: "07 19 14 25 80",
+    whatsappMessage: "Bonjour, je vous contacte depuis votre carte VisiTap.",
+    website: "",
+    appointmentUrl: "",
+    appointmentLabel: "",
+    googleReviewsUrl: "",
+
+    servicesTitle: "Me contacter",
+    actions: [
+      { label: "Écrire sur Telegram", sub: "07 19 14 25 80", url: "https://t.me/+212719142580", icon: "telegram" },
+      { label: "Botim : 07 19 14 25 80", sub: "Touchez pour copier le numéro", copy: "0719142580", toast: "Numéro copié, collez-le dans Botim", icon: "chat" }
+    ],
+
+    instagram: "mohamed_sofian_el_ouahabi",
+    facebook: "https://www.facebook.com/share/1A5evZ1Cvd/",
+    tiktok: "", linkedin: "", youtube: "", x: "", snapchat: "", pinterest: "",
+    otherSocials: [],
+
+    theme: "nuit"
+  },
+
+  {
     // Zaman Horlogerie (Rabat) — vraie carte client, ne pas supprimer
     slug: "zaman-horlogerie",
     firstName: "Zaman",
