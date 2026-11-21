@@ -186,6 +186,45 @@ const PROFILES = [
   },
 
   {
+    // RIBATE PRO (Agadir) — génie civil — vraie carte client, ne pas supprimer
+    slug: "ribate-pro",
+    firstName: "Maati",
+    lastName: "RIBATE",
+    profession: "Gérant",
+    company: "RIBATE PRO",
+    photo: "/photos/ribate-pro-logo.jpg",
+    description: "RIBATE PRO réalise vos travaux de génie civil, de forage et d'irrigation, ainsi que vos installations de pompage solaire, partout au Maroc.",
+
+    phone: "+212 6 61 38 50 41",
+    email: "ribate@hotmail.com",
+    address: "Quartier El Houda, Agadir",
+    mapsUrl: "https://maps.app.goo.gl/QztC6SjqSH8JC7Cg6",
+
+    whatsapp: "0661385041",
+    whatsappLabel: "Demander un devis",
+    whatsappSubtitle: "Réponse sur WhatsApp",
+    whatsappMessage: "Bonjour, je souhaite un devis pour des travaux.",
+    servicesTitle: "Devis gratuit",
+    website: "",
+    appointmentUrl: "",
+    appointmentLabel: "",
+    googleReviewsUrl: "",
+
+    badgesTitle: "Nos activités",
+    badges: [
+      { label: "Travaux génie civil", icon: "helmet" },
+      { label: "Forage & irrigation", icon: "drop" },
+      { label: "Pompage solaire", icon: "solar" },
+      { label: "Basé à Agadir", icon: "pin" }
+    ],
+
+    instagram: "", facebook: "", tiktok: "", linkedin: "", youtube: "", x: "", snapchat: "", pinterest: "",
+    otherSocials: [],
+
+    theme: "noir"
+  },
+
+  {
     // Mohamed Soufiane El Ouahabi — commerce — vraie carte client, ne pas supprimer
     slug: "soufiane-el-ouahabi",
     firstName: "Mohamed Soufiane",
