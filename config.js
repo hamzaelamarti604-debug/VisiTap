@@ -186,6 +186,72 @@ const PROFILES = [
   },
 
   {
+    // Taxi Parisien Van (Paris) — chauffeur privé — vraie carte client, ne pas supprimer
+    slug: "taxi-parisien-van",
+    firstName: "Taxi Parisien",
+    lastName: "Van",
+    profession: "Chauffeur privé · Paris",
+    company: "",
+    photo: "/photos/taxi-parisien-van.jpg",
+    description: "Votre chauffeur privé en van 8 places, 24h/24 et 7j/7 : courses dans Paris, transferts vers les aéroports, les gares et Disneyland, et longs trajets partout en France et vers les pays frontaliers.",
+
+    phone: "+33 7 58 02 49 84",
+    email: "ettaliifati87@gmail.com",
+    address: "Paris",
+    mapsUrl: "",
+
+    whatsapp: "+33758024984",
+    whatsappLabel: "Réserver mon trajet",
+    whatsappSubtitle: "Réponse rapide sur WhatsApp",
+    whatsappMessage: "Bonjour, je souhaite réserver un trajet.\nDépart : \nArrivée : \nDate et heure : \nNombre de passagers : ",
+    servicesTitle: "Contact",
+    primaryAction: "whatsapp",
+    saveSubtitle: "Pour vos prochains trajets",
+    website: "",
+    appointmentUrl: "",
+    appointmentLabel: "",
+    googleReviewsUrl: "",
+
+    stepsTitle: "Comment réserver",
+    steps: [
+      "Envoyez votre trajet sur WhatsApp : départ, arrivée, date et heure",
+      "Nous vous confirmons le tarif et la prise en charge",
+      "Votre chauffeur vous attend à l'heure convenue"
+    ],
+
+    badgesTitle: "Nos trajets",
+    badges: [
+      { label: "Courses en ville", sub: "Dans tout Paris", icon: "city" },
+      { label: "Aéroports", sub: "Roissy-CDG · Orly · Beauvais", icon: "plane" },
+      { label: "Gares", sub: "Toutes les gares de Paris", icon: "train" },
+      { label: "Disneyland Paris", sub: "Depuis Paris", icon: "castle" },
+      { label: "Toute la France", sub: "Longue distance", icon: "route" },
+      { label: "Pays frontaliers", sub: "Belgique, Suisse, Allemagne…", icon: "globe" }
+    ],
+
+    badgeGroups: [
+      { title: "Votre confort", badges: [
+        { label: "Van 8 places", sub: "Idéal familles & groupes", icon: "van" },
+        { label: "Siège bébé", sub: "Inclus sur demande", icon: "baby" },
+        { label: "24h/24 · 7j/7", sub: "Jour, nuit et week-end", icon: "clock" },
+        { label: "Paris", sub: "Prise en charge dans tout Paris", icon: "pin" }
+      ] },
+      { title: "Paiement", badges: [
+        { label: "Carte bancaire", sub: "CB acceptée", icon: "card" },
+        { label: "Espèces", icon: "cash" },
+        { label: "Paiement en ligne", icon: "link" }
+      ] }
+    ],
+
+    instagram: "ettaliifati",
+    snapchat: "fati_ettalii",
+    facebook: "", tiktok: "", linkedin: "", youtube: "", x: "", pinterest: "",
+    otherSocials: [],
+
+    theme: "noir"
+  },
+
+  {
     // ULTRA PROJETS (Agadir) — même gérant que RIBATE PRO — vraie carte client, ne pas supprimer
     slug: "ultra-projets",
     firstName: "Maati",
