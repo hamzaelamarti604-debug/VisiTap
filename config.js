@@ -253,6 +253,59 @@ const PROFILES = [
   },
 
   {
+    // MEHDI DELIVERY (Casablanca) — livreur / coursier — vraie carte client, ne pas supprimer
+    slug: "mehdi-delivery",
+    firstName: "Mehdi",
+    lastName: "Delivery",
+    profession: "Livreur · Coursier",
+    company: "",
+    photo: "/photos/mehdi-delivery.jpg",
+    description: "Courses express, livraison de colis et de documents à Casablanca, pour les particuliers comme pour les professionnels. Un service rapide, fiable et soigné.",
+
+    phone: "+212 6 00 76 39 56",
+    email: "maatani43@gmail.com",
+    address: "Casablanca",
+    mapsUrl: "",
+
+    whatsapp: "+212600763956",
+    whatsappLabel: "Commander une course",
+    whatsappSubtitle: "Réponse rapide sur WhatsApp",
+    whatsappMessage: "Bonjour Mehdi, je souhaite une livraison.\nRécupération : \nLivraison : \nÀ livrer : \nPour quand : ",
+    servicesTitle: "Contact",
+    primaryAction: "whatsapp",
+    saveSubtitle: "Pour vos prochaines courses",
+    website: "",
+    appointmentUrl: "",
+    appointmentLabel: "",
+    googleReviewsUrl: "",
+
+    stepsTitle: "Comment commander",
+    steps: [
+      "Envoyez votre demande sur WhatsApp : adresse de récupération et de livraison",
+      "Mehdi vous confirme le tarif et l'heure de passage",
+      "Votre commande est récupérée et livrée rapidement"
+    ],
+
+    badgesTitle: "Nos services",
+    badges: [
+      { label: "Courses express", sub: "Achats du quotidien ou imprévus", icon: "bolt" },
+      { label: "Particuliers", sub: "Courses et colis à domicile", icon: "home" },
+      { label: "Professionnels", sub: "Documents, courriers, marchandise", icon: "briefcase" },
+      { label: "Livraison de colis", sub: "Dans tout Casablanca", icon: "box" }
+    ],
+
+    hours: [
+      { days: "Lundi – Vendredi", time: "8h00 – 19h00" },
+      { days: "Samedi", time: "8h00 – 17h00" },
+      { days: "Dimanche", time: "Fermé" }
+    ],
+
+    instagram: "mehdi_delivry", facebook: "", tiktok: "", linkedin: "", youtube: "", x: "", pinterest: "", snapchat: "",
+    otherSocials: [],
+    theme: "nuit"
+  },
+
+  {
     // Taxi Parisien Van (Paris) — chauffeur privé — vraie carte client, ne pas supprimer
     slug: "taxi-parisien-van",
     firstName: "Taxi Parisien",
