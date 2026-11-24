@@ -325,6 +325,8 @@ dialog.team .card{text-align:left}
 .steps{list-style:none;margin:0;padding:4px 0}
 .steps li{display:flex;align-items:center;gap:14px;padding:14px 16px;font-size:14.5px;line-height:1.45;color:var(--text)}
 .steps li + li{border-top:1px solid var(--line)}
+.steps li.rich{align-items:flex-start}.steps li.rich .sn{margin-top:1px}
+.steps .st{display:flex;flex-direction:column;gap:3px}.steps .st b{font-weight:600;font-size:15px}.steps .st small{font-size:13px;line-height:1.45;color:var(--muted)}
 .steps .sn{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-family:var(--sans);font-weight:700;font-size:13.5px;line-height:1;font-variant-numeric:lining-nums tabular-nums;color:var(--on-gold);background:var(--gold-grad)}
 .badges{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .badge{display:flex;align-items:center;gap:10px;min-height:58px;padding:12px 14px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(var(--ink-rgb),.045),rgba(var(--ink-rgb),.018));font-size:13px;font-weight:600;line-height:1.3;color:var(--text)}
@@ -398,6 +400,16 @@ a.badge{transition:background .3s var(--ease)}
   ICONS.cash = '<rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5v5M18 9.5v5"/>';
   ICONS.baby = '<circle cx="12" cy="7" r="3"/><path d="M7 21v-5a5 5 0 0 1 10 0v5M7 16h10"/>';
   ICONS.van = '<path d="M2.5 16V8a2 2 0 0 1 2-2h11l4.5 5v5z"/><path d="M15.5 6v5h4.5M2.5 11h13"/><circle cx="7" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/>';
+  ICONS.key = '<circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 20 3M16 7l3 3M14 9l2 2"/>';
+  ICONS.sparkle = '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>';
+  ICONS.bed = '<path d="M3 19V6M3 14h18v5"/><path d="M3 12h6v2"/><path d="M9 11h9a3 3 0 0 1 3 3"/>';
+  ICONS.camera = '<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>';
+  ICONS.chart = '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>';
+  ICONS.tool = '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-2.4z"/>';
+  ICONS.megaphone = '<path d="M3 11v2a1 1 0 0 0 1 1h3l7 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M18 8.5a5 5 0 0 1 0 7"/><path d="M7 14l1.5 5h2.5L10 15"/>';
+  ICONS.shield = '<path d="M12 2.5 4.5 5.5v6c0 4.6 3.2 8.4 7.5 10 4.3-1.6 7.5-5.4 7.5-10v-6z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/>';
+  ICONS.doc = '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/>';
+  ICONS.scale = '<path d="M12 4v16M8 20h8M5 7h14"/><path d="M12 4.5 5 7M12 4.5 19 7"/><path d="M5 7l-2.5 6a2.8 2.8 0 0 0 5 0z"/><path d="M19 7l-2.5 6a2.8 2.8 0 0 0 5 0z"/>';
   ICONS.telegram = '<path d="M21.5 3.5 2.8 10.7c-.9.4-.9 1.6 0 1.9l4.6 1.6 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.5 4.6 3.4c.6.4 1.4.1 1.6-.6L22.9 5c.2-1-.6-1.8-1.4-1.5z"/><path d="M7.4 14.2 18 7.2l-8 8.3"/>';
   ICONS.touch = '<path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V9a1.5 1.5 0 0 1 3 0v2"/><path d="M15 10.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-.5a6 6 0 0 1-4.9-2.5L4.2 15a1.5 1.5 0 0 1 2.4-1.8L9 15"/>';
 
@@ -975,10 +987,11 @@ a.badge{transition:background .3s var(--ease)}
   function stepsCard(steps) {
     var list = Array.isArray(steps) ? steps : [], ol = el('ol', { class: 'steps' }), n = 0;
     list.forEach(function (s) {
-      var t = str(s);
+      var o = s && typeof s === 'object', t = o ? str(s.title) : str(s);
       if (!t) return;
       n++;
-      ol.appendChild(el('li', null, el('span', { class: 'sn', 'aria-hidden': 'true' }, String(n)), el('span', null, t)));
+      var body = o && str(s.text) ? el('span', { class: 'st' }, el('b', null, t), el('small', null, str(s.text))) : el('span', null, t);
+      ol.appendChild(el('li', o ? { class: 'rich' } : null, el('span', { class: 'sn', 'aria-hidden': 'true' }, String(n)), body));
     });
     return n ? el('div', { class: 'card' }, ol) : null;
   }

@@ -186,6 +186,73 @@ const PROFILES = [
   },
 
   {
+    // KEYORA Conciergerie (Marrakech · Casablanca)
+    slug: "keyora-conciergerie",
+    firstName: "KEYORA",
+    lastName: "Conciergerie",
+    profession: "Conciergerie & Gestion Locative Premium",
+    company: "",
+    photo: "/photos/keyora-conciergerie.jpg",
+    description: "Précision d'ingénieur. Hospitalité marocaine. Nous prenons en charge l'intégralité de la gestion de votre bien à Marrakech et Casablanca, pendant que vous profitez de vos revenus.",
+
+    phone: "+212 6 60 58 82 72",
+    email: "contact@keyora-conciergerie.com",
+    address: "Marrakech · Casablanca",
+    mapsUrl: "",
+
+    whatsapp: "+212660588272",
+    whatsappLabel: "Demander une étude gratuite",
+    whatsappSubtitle: "Gratuit et sans engagement",
+    whatsappMessage: "Bonjour KEYORA, je souhaite une étude gratuite pour mon bien.\nVille : \nType de bien : \nLien de l'annonce (si existante) : ",
+    servicesTitle: "Contact",
+    primaryAction: "whatsapp",
+    saveSubtitle: "Gardez notre numéro",
+    website: "https://keyora-conciergerie.com",
+    appointmentUrl: "",
+    appointmentLabel: "",
+    googleReviewsUrl: "",
+
+    stepsTitle: "En cinq étapes",
+    steps: [
+      { title: "Contact", text: "Vous nous contactez — nous prenons le temps d'écouter vos objectifs et de comprendre votre bien." },
+      { title: "Visite", text: "Visite sur place, audit technique et projection de rendement personnalisée." },
+      { title: "Mise en ligne", text: "Reportage photo éditorial, rédaction de l'annonce et lancement multi-canal." },
+      { title: "Accueil voyageurs", text: "Accueil concierge, suivi des voyageurs et rotations aux standards hôteliers, 24/7." },
+      { title: "Paiement", text: "Versement mensuel transparent, accompagné d'un relevé détaillé — sans aucune surprise." }
+    ],
+
+    badgesTitle: "Nos services",
+    badges: [
+      { label: "Gestion Airbnb & Booking", sub: "Calendriers synchronisés", icon: "globe" },
+      { label: "Stratégie de prix (yield)", sub: "Tarifs ajustés chaque jour", icon: "chart" },
+      { label: "Marketing digital", sub: "Airbnb, Booking & canal direct", icon: "megaphone" },
+      { label: "Service voyageurs", sub: "Réponse en moins de 15 min", icon: "chat" },
+      { label: "Check-in & check-out", sub: "Accueil & remise des clés", icon: "key" },
+      { label: "Ménage & linge", sub: "Standards hôteliers", icon: "sparkle" },
+      { label: "Maintenance & réparations", sub: "Artisans de confiance", icon: "tool" },
+      { label: "Protection du bien", sub: "Assurances & dédommagements", icon: "shield" },
+      { label: "Fiches de police & conformité", sub: "Location en règle", icon: "scale" },
+      { label: "Reporting mensuel", sub: "Revenus & dépenses", icon: "doc" },
+      { label: "Gestion e‑réputation", sub: "Réponse à chaque avis", icon: "star" },
+      { label: "Photographie professionnelle", sub: "En option", icon: "camera" }
+    ],
+
+    badgeGroups: [
+      { title: "En chiffres", badges: [
+        { label: "+35 %", sub: "Hausse moyenne des revenus", icon: "chart" },
+        { label: "4,92 ★", sub: "Note voyageurs", icon: "star" },
+        { label: "24/7", sub: "Conciergerie disponible", icon: "clock" },
+        { label: "Aucun frais caché", sub: "Relevé détaillé chaque mois", icon: "check" }
+      ] }
+    ],
+
+    instagram: "keyora_conciergerie", facebook: "https://www.facebook.com/share/1HRVBgzJSX/", tiktok: "", linkedin: "https://www.linkedin.com/in/keyora-conciergerie-a77a8344b", youtube: "", x: "", snapchat: "", pinterest: "",
+    otherSocials: [],
+
+    theme: "noir"
+  },
+
+  {
     // Taxi Parisien Van (Paris) — chauffeur privé — vraie carte client, ne pas supprimer
     slug: "taxi-parisien-van",
     firstName: "Taxi Parisien",
