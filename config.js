@@ -253,6 +253,58 @@ const PROFILES = [
   },
 
   {
+    // DR.PHONES (Tanger) — Anass Benachir, réparation mobile — vraie carte client, ne pas supprimer
+    slug: "dr-phones",
+    firstName: "Dr.phones",
+    lastName: "",
+    profession: "Réparation iPhone & Android · Tanger",
+    company: "Anass Benachir · Fondateur",
+    photo: "/photos/dr-phones.jpg",
+    description: "Votre téléphone, notre expertise. Réparation iPhone et Android, microsoudure et diagnostic professionnel à Tanger, pour les particuliers comme pour les magasins.",
+
+    phone: "+212 6 61 97 65 89",
+    email: "anass.drphones@gmail.com",
+    address: "Tanger",
+    mapsUrl: "https://maps.app.goo.gl/V9QfueAtMr63qpHU7",
+
+    whatsapp: "+212661976589",
+    whatsappLabel: "Demander une réparation",
+    whatsappSubtitle: "Réponse rapide sur WhatsApp",
+    whatsappMessage: "Bonjour Dr.phones, j'ai besoin d'une réparation.\nModèle du téléphone : \nProblème : ",
+    primaryAction: "whatsapp",
+    servicesTitle: "Contact",
+    saveSubtitle: "Enregistrer Dr.phones dans votre téléphone",
+    website: "",
+    googleReviewsUrl: "https://search.google.com/local/writereview?placeid=ChIJ47uExK-HCw0RkkOqt05uJqM",
+
+    badgesTitle: "Pour les particuliers",
+    badges: [
+      { label: "Écran & batterie", sub: "Remplacement soigné", icon: "phone" },
+      { label: "Problème de charge", sub: "Connecteur, batterie", icon: "bolt" },
+      { label: "Panne logicielle", sub: "Blocage, mise à jour", icon: "tool" },
+      { label: "Tous les modèles", sub: "iPhone & Android", icon: "check" }
+    ],
+    badgeGroups: [
+      { title: "Pour les magasins", badges: [
+        { label: "Microsoudure", sub: "IC repair", icon: "wrench" },
+        { label: "Cartes mères", sub: "Réparation électronique", icon: "tool" },
+        { label: "Diagnostic avancé", sub: "Pannes complexes", icon: "chart" },
+        { label: "Service B2B", sub: "Partenariat de confiance", icon: "briefcase" }
+      ] },
+      { title: "Pourquoi Dr.phones", badges: [
+        { label: "Qualité garantie", sub: "Pièces et travail", icon: "shield" },
+        { label: "Service rapide", sub: "Délais courts", icon: "clock" },
+        { label: "Technicien expérimenté", sub: "Diagnostic précis", icon: "star" },
+        { label: "Tanger", sub: "Atelier Dr.phones", icon: "pin" }
+      ] }
+    ],
+
+    instagram: "anassbenachir", facebook: "https://www.facebook.com/share/19uRy9H4qJ/", tiktok: "dr_phones", linkedin: "", youtube: "", x: "", pinterest: "", snapchat: "",
+    otherSocials: [],
+    theme: "nuit"
+  },
+
+  {
     // YOUSSEF MANSOURI — vraie carte client, ne pas supprimer — Authentic Morocco by Mansouri (Casa Transfer + Casablanca Travel Experience) — profil bilingue FR / EN
     slug: "youssef-mansouri",
     firstName: "Youssef",
