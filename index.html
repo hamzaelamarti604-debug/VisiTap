@@ -334,6 +334,31 @@ dialog.team .card{text-align:left}
 .badge .bi .ic{width:16px;height:16px}
 .badge .bs{display:block;margin-top:1px;font-size:11.5px;font-weight:500;color:var(--muted)}
 a.badge{transition:background .3s var(--ease)}
+/* Sélecteur de langue (profils bilingues uniquement) */
+.top.has-lang{justify-content:space-between}
+.lang{display:inline-flex;padding:3px;border-radius:999px;border:1px solid var(--line-strong);background:rgba(var(--ink-rgb),.03)}
+.lang button{min-width:38px;padding:5px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--muted)}
+.lang button[aria-pressed="true"]{background:var(--gold-grad);color:var(--on-gold)}
+/* Entreprises du groupe */
+.cos{display:flex;flex-direction:column;gap:12px}
+.co{padding:16px;border-radius:20px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(var(--ink-rgb),.045),rgba(var(--ink-rgb),.018));box-shadow:var(--shadow)}
+.co-logo{display:flex;align-items:center;justify-content:center;height:78px;padding:10px 14px;border-radius:14px;background:#fff;border:1px solid rgba(0,0,0,.05)}
+.co-logo img{max-width:100%;max-height:100%;object-fit:contain}
+.co h3{margin:14px 0 4px;font-size:16px;font-weight:700;color:var(--text)}
+.co p{margin:0;font-size:13.5px;line-height:1.5;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.co .chips{margin-top:12px}
+.chip{padding:6px 11px;border-radius:999px;border:1px solid var(--line-strong);background:rgba(var(--ink-rgb),.03);font-size:12px;font-weight:600;line-height:1.2;color:var(--text)}
+.co-btn{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border-radius:12px;font-size:13.5px;font-weight:700;color:var(--on-gold);background:var(--gold-grad)}
+.co-btn .ic{width:16px;height:16px}
+/* Flotte */
+.fleet{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -20px;padding:2px 20px 4px;scroll-padding:0 20px}
+.fleet::-webkit-scrollbar{display:none}
+.veh{flex:0 0 78%;scroll-snap-align:start;margin:0;overflow:hidden;border-radius:16px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(var(--ink-rgb),.045),rgba(var(--ink-rgb),.018))}
+.veh img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#fff}
+.veh figcaption{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px}
+.veh b{font-size:13.5px;font-weight:700;color:var(--text)}
+.veh span{font-size:11.5px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -413,6 +438,9 @@ a.badge{transition:background .3s var(--ease)}
   ICONS.bolt = '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>';
   ICONS.briefcase = '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18"/>';
   ICONS.box = '<path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9M7.5 5.2l9 4.5"/>';
+  ICONS.car = '<path d="M5 16V11l2-5h10l2 5v5"/><path d="M3 16h18v2.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V18H7v.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M5 11h14"/><circle cx="7.5" cy="14" r=".8"/><circle cx="16.5" cy="14" r=".8"/>';
+  ICONS.trophy = '<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7M10 17h4v3h-4z"/>';
+  ICONS.compass = '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>';
   ICONS.telegram = '<path d="M21.5 3.5 2.8 10.7c-.9.4-.9 1.6 0 1.9l4.6 1.6 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.5 4.6 3.4c.6.4 1.4.1 1.6-.6L22.9 5c.2-1-.6-1.8-1.4-1.5z"/><path d="M7.4 14.2 18 7.2l-8 8.3"/>';
   ICONS.touch = '<path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V9a1.5 1.5 0 0 1 3 0v2"/><path d="M15 10.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-.5a6 6 0 0 1-4.9-2.5L4.2 15a1.5 1.5 0 0 1 2.4-1.8L9 15"/>';
 
@@ -440,6 +468,25 @@ a.badge{transition:background .3s var(--ease)}
 
   /* ---------- Utilitaires ---------- */
   function str(v) { return (v === undefined || v === null) ? '' : String(v).trim(); }
+  // Langue de l'interface : « fr » par défaut ; l'anglais n'est utilisé que pour les profils bilingues (champ i18n)
+  var LANG = 'fr';
+  var UI_EN = {
+    'Ajouter aux contacts': 'Save contact', 'Enregistrer le numéro dans votre téléphone': 'Save the number to your phone',
+    'Écrire un message': 'Send a message', 'Site web': 'Website', 'Avis Google': 'Google reviews',
+    'Consulter ou laisser un avis': 'Read or leave a review', 'Services': 'Services', 'Galerie': 'Gallery',
+    'Étapes': 'Steps', 'Comment commander': 'How to book', 'Nos garanties': 'Our guarantees', 'Infos': 'Info',
+    'Horaires': 'Opening hours', 'Réseaux': 'Social media', 'Réseaux sociaux': 'Social media', 'Liens': 'Links',
+    'Ouvrir le lien': 'Open link', 'Partager': 'Share', 'QR code': 'QR code', 'Téléphone': 'Phone', 'E-mail': 'Email',
+    'Adresse': 'Address', 'Appeler': 'Call', 'Écrire': 'Write', 'Maps': 'Maps', 'Voir sur la carte': 'View on map',
+    'Touchez une icône pour afficher la coordonnée': 'Tap an icon to show the contact detail',
+    'Touchez l\u2019icône pour afficher la coordonnée': 'Tap the icon to show the contact detail',
+    'Afficher : ': 'Show: ', 'Coordonnées': 'Contact details', 'Copié': 'Copied', 'Lien copié': 'Link copied',
+    'Fiche contact téléchargée': 'Contact card downloaded', 'Impossible de créer la fiche contact': 'Could not create the contact card',
+    'Scanner pour ouvrir la carte': 'Scan to open the card', 'Télécharger': 'Download', 'Fermer': 'Close',
+    'QR code indisponible.': 'QR code unavailable.', 'Faites glisser pour voir plus →': 'Swipe to see more →',
+    'Nos entreprises': 'Our companies', 'Notre flotte': 'Our fleet', 'Visiter le site': 'Visit website', 'Photo de ': 'Photo of '
+  };
+  function T(s) { return LANG === 'en' && UI_EN[s] ? UI_EN[s] : s; }
   function el(tag, props) {
     var n = document.createElement(tag);
     if (props) Object.keys(props).forEach(function (k) {
@@ -836,8 +883,8 @@ a.badge{transition:background .3s var(--ease)}
     btn.setAttribute('aria-busy', 'true');
     photoForVcard(p.vcardPhoto === false ? '' : safeUrl(p.photo)).then(function (b64) {
       download(new Blob([buildVcard(p, slug, b64)], { type: 'text/vcard;charset=utf-8' }), slug + '.vcf');
-      toast('Fiche contact téléchargée');
-    }).catch(function (e) { console.error(e); toast('Impossible de créer la fiche contact'); })
+      toast(T('Fiche contact téléchargée'));
+    }).catch(function (e) { console.error(e); toast(T('Impossible de créer la fiche contact')); })
       .then(function () { btn.removeAttribute('aria-busy'); });
   }
 
@@ -847,18 +894,18 @@ a.badge{transition:background .3s var(--ease)}
     if (navigator.share) { navigator.share(data).catch(function (e) { if (!e || e.name !== 'AbortError') fallbackCopy(url); }); return; }
     fallbackCopy(url);
   }
-  function fallbackCopy(url) { copy(url).then(function (ok) { if (ok) toast('Lien copié'); }); }
+  function fallbackCopy(url) { copy(url).then(function (ok) { if (ok) toast(T('Lien copié')); }); }
 
   /* ---------- Fenêtre QR ---------- */
   function openQr(name, url, slug) {
     var box = el('div', { class: 'qr-box' }), qr = null;
     try { qr = QR.encode(url); box.innerHTML = qrSvg(qr); }
-    catch (e) { console.warn('[VisiTap]', e); box.textContent = 'QR code indisponible.'; }
-    var closeBtn = el('button', { class: 'dlg-close', type: 'button', 'aria-label': 'Fermer' }, icon('close'));
-    var pngBtn = el('button', { class: 'ghost', type: 'button', disabled: !qr }, icon('download'), el('span', null, 'Télécharger'));
+    catch (e) { console.warn('[VisiTap]', e); box.textContent = T('QR code indisponible.'); }
+    var closeBtn = el('button', { class: 'dlg-close', type: 'button', 'aria-label': T('Fermer') }, icon('close'));
+    var pngBtn = el('button', { class: 'ghost', type: 'button', disabled: !qr }, icon('download'), el('span', null, T('Télécharger')));
     var dlg = el('dialog', { class: 'qr', 'aria-labelledby': 'qr-title' },
       el('div', { class: 'dlg' }, closeBtn,
-        el('p', { class: 'eyebrow', id: 'qr-title' }, 'Scanner pour ouvrir la carte'),
+        el('p', { class: 'eyebrow', id: 'qr-title' }, T('Scanner pour ouvrir la carte')),
         el('p', { class: 'dname' }, name),
         box,
         el('p', { class: 'qr-url' }, url),
@@ -876,17 +923,17 @@ a.badge{transition:background .3s var(--ease)}
   function contactBlock(p) {
     var items = [];
     var tel = telHref(p.phone);
-    if (tel) items.push({ ic: 'phone', label: 'Téléphone', value: str(p.phone), href: tel, action: 'Appeler', aic: 'phone' });
+    if (tel) items.push({ ic: 'phone', label: T('Téléphone'), value: str(p.phone), href: tel, action: T('Appeler'), aic: 'phone' });
     var mail = emailHref(p.email);
-    if (mail) items.push({ ic: 'mail', label: 'E-mail', value: str(p.email), href: mail, action: 'Écrire', aic: 'arrow' });
+    if (mail) items.push({ ic: 'mail', label: T('E-mail'), value: str(p.email), href: mail, action: T('Écrire'), aic: 'arrow' });
     var map = mapHref(p);
-    if (map) items.push({ ic: 'pin', label: 'Adresse', value: str(p.address) || 'Voir sur la carte', href: map, action: 'Maps', aic: 'arrow' });
+    if (map) items.push({ ic: 'pin', label: T('Adresse'), value: str(p.address) || T('Voir sur la carte'), href: map, action: T('Maps'), aic: 'arrow' });
     if (!items.length) return null;
 
     var n = items.length, uid = 'reveal-' + Math.random().toString(36).slice(2, 8);
     var reveal = el('div', { class: 'reveal', id: uid, 'aria-live': 'polite' },
-      el('p', { class: 'hint', style: 'margin:0' }, icon('touch'), n > 1 ? 'Touchez une icône pour afficher la coordonnée' : 'Touchez l\u2019icône pour afficher la coordonnée'));
-    var group = el('div', { class: 'cicons', role: 'group', 'aria-label': 'Coordonnées', style: '--n:' + n });
+      el('p', { class: 'hint', style: 'margin:0' }, icon('touch'), n > 1 ? T('Touchez une icône pour afficher la coordonnée') : T('Touchez l\u2019icône pour afficher la coordonnée')));
+    var group = el('div', { class: 'cicons', role: 'group', 'aria-label': T('Coordonnées'), style: '--n:' + n });
     var buttons = [], panels = [], current = -1;
 
     items.forEach(function (it, i) {
@@ -894,7 +941,7 @@ a.badge{transition:background .3s var(--ease)}
         el('span', { class: 'rv-t' }, el('span', { class: 'rv-l' }, it.label), el('span', { class: 'rv-v' }, it.value)),
         el('span', { class: 'rv-a' }, icon(it.aic), it.action));
       reveal.appendChild(panel); panels.push(panel);
-      var b = el('button', { class: 'cbtn', type: 'button', 'aria-expanded': 'false', 'aria-controls': uid, 'aria-label': 'Afficher : ' + it.label, title: it.label }, icon(it.ic));
+      var b = el('button', { class: 'cbtn', type: 'button', 'aria-expanded': 'false', 'aria-controls': uid, 'aria-label': T('Afficher : ') + it.label, title: it.label }, icon(it.ic));
       b.addEventListener('click', function () { toggle(i); });
       group.appendChild(b); buttons.push(b);
     });
@@ -908,7 +955,7 @@ a.badge{transition:background .3s var(--ease)}
       reveal.classList.toggle('on', current >= 0);
       if (current >= 0) reveal.style.setProperty('--x', ((current + 0.5) / n * 100) + '%');
     }
-    return el('section', { class: 'contact', 'aria-label': 'Coordonnées' }, group, reveal);
+    return el('section', { class: 'contact', 'aria-label': T('Coordonnées') }, group, reveal);
   }
 
   function rowsCard(rows) {
@@ -942,7 +989,7 @@ a.badge{transition:background .3s var(--ease)}
     }).filter(Boolean);
   }
   function openTeam(team, members) {
-    var closeBtn = el('button', { class: 'dlg-close', type: 'button', 'aria-label': 'Fermer' }, icon('close'));
+    var closeBtn = el('button', { class: 'dlg-close', type: 'button', 'aria-label': T('Fermer') }, icon('close'));
     var card = el('div', { class: 'card' });
     members.forEach(function (m) {
       card.appendChild(link(m.href, { class: 'row', 'aria-label': 'WhatsApp — ' + m.name },
@@ -985,7 +1032,7 @@ a.badge{transition:background .3s var(--ease)}
         cap ? el('figcaption', null, cap) : null));
       n++;
     });
-    return n ? [box, n > 1 ? el('p', { class: 'ghint' }, 'Faites glisser pour voir plus →') : null] : null;
+    return n ? [box, n > 1 ? el('p', { class: 'ghint' }, T('Faites glisser pour voir plus →')) : null] : null;
   }
   function stepsCard(steps) {
     var list = Array.isArray(steps) ? steps : [], ol = el('ol', { class: 'steps' }), n = 0;
@@ -1028,14 +1075,23 @@ a.badge{transition:background .3s var(--ease)}
     var d = 0, nodes = [];
     function IN(n) { if (!n) return n; n.classList.add('in'); n.style.setProperty('--d', String(d++)); nodes.push(n); return n; }
 
-    IN(el('header', { class: 'top' }, wordmark()));
+    var langs = (p.__langs || []);
+    if (langs.length > 1) {
+      var sw = el('div', { class: 'lang', role: 'group', 'aria-label': 'Language' });
+      langs.forEach(function (l) {
+        var b = el('button', { type: 'button', 'aria-pressed': String(l === LANG), lang: l }, l.toUpperCase());
+        b.addEventListener('click', function () { if (l !== LANG && p.__switch) p.__switch(l); });
+        sw.appendChild(b);
+      });
+      IN(el('header', { class: 'top has-lang' }, wordmark(), sw));
+    } else IN(el('header', { class: 'top' }, wordmark()));
 
     // Présentation
     var photoBox = el('div', { class: 'photo' });
     var slot = function () { photoBox.textContent = ''; photoBox.appendChild(el('span', { class: 'photo-slot' }, el('span', { class: 'ini', 'aria-hidden': 'true' }, initials(p, name)))); };
     var photo = safeUrl(p.photo);
     if (photo) {
-      var img = el('img', { alt: 'Photo de ' + name, decoding: 'async' });
+      var img = el('img', { alt: T('Photo de ') + name, decoding: 'async' });
       img.addEventListener('error', slot);
       img.src = photo; photoBox.appendChild(img);
     } else slot();
@@ -1053,7 +1109,7 @@ a.badge{transition:background .3s var(--ease)}
     if (waFirst) {
       IN(link(waHref(p), { class: 'cta' }, icon('whatsapp'), el('span', null, str(p.whatsappLabel) || 'WhatsApp')));
     } else {
-      var cta = el('button', { class: 'cta', type: 'button' }, icon('userPlus'), el('span', null, 'Ajouter aux contacts'));
+      var cta = el('button', { class: 'cta', type: 'button' }, icon('userPlus'), el('span', null, T('Ajouter aux contacts')));
       cta.addEventListener('click', function () { saveContact(p, slug, cta); });
       IN(cta);
     }
@@ -1067,8 +1123,10 @@ a.badge{transition:background .3s var(--ease)}
     if (rdv) rows.push([rdv, 'calendar', str(p.appointmentLabel) || 'Prendre rendez-vous', 'Réserver un créneau en ligne', true]);
     var wa = waHref(p);
     if (waFirst) {
-      rows.push([function (ev) { saveContact(p, slug, ev.currentTarget); }, 'userPlus', 'Ajouter aux contacts', str(p.saveSubtitle) || 'Enregistrer le numéro dans votre téléphone']);
-    } else if (wa) rows.push([wa, 'whatsapp', str(p.whatsappLabel) || 'WhatsApp', str(p.whatsappSubtitle) || 'Écrire un message']);
+      // Option : répéter WhatsApp en tête de la liste (waRow: true)
+      if (p.waRow) rows.push([waHref(p), 'whatsapp', 'WhatsApp', str(p.waRowSubtitle) || str(p.phone)]);
+      rows.push([function (ev) { saveContact(p, slug, ev.currentTarget); }, 'userPlus', T('Ajouter aux contacts'), str(p.saveSubtitle) || T('Enregistrer le numéro dans votre téléphone')]);
+    } else if (wa) rows.push([wa, 'whatsapp', str(p.whatsappLabel) || 'WhatsApp', str(p.whatsappSubtitle) || T('Écrire un message')]);
     var team = (p.team && typeof p.team === 'object') ? p.team : null, members = teamMembers(team);
     if (members.length) rows.push([function () { openTeam(team, members); }, 'users', str(team.label) || 'Écrire à l’équipe', str(team.subtitle) || (members.length + ' contacts WhatsApp')]);
     // Boutons supplémentaires (facultatif) : actions: [{ label, sub, url, icon }]
@@ -1077,7 +1135,7 @@ a.badge{transition:background .3s var(--ease)}
       var u = safeUrl(a.url);
       // Sans lien mais avec « copy » : la ligne copie le texte (ex. numéro Botim)
       if (!u && str(a.copy)) {
-        var cp = str(a.copy), msg = str(a.toast) || 'Copié';
+        var cp = str(a.copy), msg = str(a.toast) || T('Copié');
         rows.push([function () { copy(cp).then(function (ok) { if (ok) toast(msg); }); }, ICONS[str(a.icon)] ? str(a.icon) : 'chat', str(a.label), str(a.sub) || cp]);
         return;
       }
@@ -1085,37 +1143,70 @@ a.badge{transition:background .3s var(--ease)}
       rows.push([u, ICONS[str(a.icon)] ? str(a.icon) : 'link', str(a.label), str(a.sub) || host(u)]);
     });
     var web = safeUrl(p.website);
-    if (web) rows.push([web, 'globe', 'Site web', host(web)]);
+    if (web) rows.push([web, 'globe', T('Site web'), host(web)]);
     var rev = safeUrl(p.googleReviewsUrl);
-    if (rev) rows.push([rev, 'star', 'Avis Google', 'Consulter ou laisser un avis']);
-    var svcT = str(p.servicesTitle) || 'Services';
+    if (rev) rows.push([rev, 'star', T('Avis Google'), T('Consulter ou laisser un avis')]);
+    var svcT = str(p.servicesTitle) || T('Services');
     if (rows.length) IN(el('section', { 'aria-label': svcT }, stitle(svcT), rowsCard(rows)));
+
+    // Entreprises du groupe (facultatif) : companies: [{ logo, name, text, tags: [], url, label }]
+    var cos = el('div', { class: 'cos' }), nco = 0;
+    (Array.isArray(p.companies) ? p.companies : []).forEach(function (c) {
+      if (!c || !str(c.name)) return;
+      var lg = safeUrl(c.logo), cu = safeUrl(c.url);
+      var tags = (Array.isArray(c.tags) ? c.tags : []).map(str).filter(Boolean);
+      cos.appendChild(el('article', { class: 'co' },
+        lg ? el('div', { class: 'co-logo' }, el('img', { src: lg, alt: str(c.name), loading: 'lazy', decoding: 'async' })) : null,
+        el('h3', null, str(c.name)),
+        str(c.text) ? el('p', null, str(c.text)) : null,
+        tags.length ? el('div', { class: 'chips' }, tags.map(function (t) { return el('span', { class: 'chip' }, t); })) : null,
+        cu ? link(cu, { class: 'co-btn' }, icon('globe'), el('span', null, str(c.label) || T('Visiter le site'))) : null));
+      nco++;
+    });
+    if (nco) { var coT = str(p.companiesTitle) || T('Nos entreprises'); IN(el('section', { 'aria-label': coT }, stitle(coT), cos)); }
 
     // Galerie, étapes, garanties (facultatif)
     var gb = galleryBlock(p.gallery);
-    if (gb) IN(el('section', { 'aria-label': 'Galerie' }, stitle(str(p.galleryTitle) || 'Galerie'), gb));
+    if (gb) IN(el('section', { 'aria-label': T('Galerie') }, stitle(str(p.galleryTitle) || T('Galerie')), gb));
     var sc = stepsCard(p.steps);
-    if (sc) IN(el('section', { 'aria-label': 'Étapes' }, stitle(str(p.stepsTitle) || 'Comment commander'), sc));
+    if (sc) IN(el('section', { 'aria-label': T('Étapes') }, stitle(str(p.stepsTitle) || T('Comment commander')), sc));
     var bg = badgesGrid(p.badges);
-    if (bg) IN(el('section', { 'aria-label': 'Garanties' }, stitle(str(p.badgesTitle) || 'Nos garanties'), bg));
+    if (bg) IN(el('section', { 'aria-label': T('Nos garanties') }, stitle(str(p.badgesTitle) || T('Nos garanties')), bg));
+    // Flotte avec photos (facultatif) : fleet: [{ img, label, sub }]
+    var fl = el('div', { class: 'fleet' }), nfl = 0;
+    (Array.isArray(p.fleet) ? p.fleet : []).forEach(function (v) {
+      if (!v || !str(v.label)) return;
+      var fu = safeUrl(v.img);
+      fl.appendChild(el('figure', { class: 'veh' },
+        fu ? el('img', { src: fu, alt: str(v.label), loading: 'lazy', decoding: 'async' }) : null,
+        el('figcaption', null, el('b', null, str(v.label)), str(v.sub) ? el('span', null, str(v.sub)) : null)));
+      nfl++;
+    });
+    if (nfl) { var flT = str(p.fleetTitle) || T('Notre flotte'); IN(el('section', { 'aria-label': flT }, stitle(flT), fl, nfl > 1 ? el('p', { class: 'ghint' }, T('Faites glisser pour voir plus →')) : null)); }
     // Groupes de pastilles supplémentaires (facultatif) : [{ title, badges: [...] }]
     (Array.isArray(p.badgeGroups) ? p.badgeGroups : []).forEach(function (g) {
       var gg = g && badgesGrid(g.badges);
-      if (gg) IN(el('section', { 'aria-label': str(g.title) || 'Infos' }, stitle(str(g.title) || 'Infos'), gg));
+      if (gg) IN(el('section', { 'aria-label': str(g.title) || T('Infos') }, stitle(str(g.title) || T('Infos')), gg));
+    });
+    // Listes de pastilles (facultatif) : chipGroups: [{ title, items: ["…"] }] — destinations, paiements…
+    (Array.isArray(p.chipGroups) ? p.chipGroups : []).forEach(function (g) {
+      var it = (g && Array.isArray(g.items) ? g.items : []).map(str).filter(Boolean);
+      if (it.length) IN(el('section', { 'aria-label': str(g.title) || T('Infos') }, stitle(str(g.title) || T('Infos')),
+        el('div', { class: 'chips' }, it.map(function (t) { return el('span', { class: 'chip' }, t); }))));
     });
 
     // Horaires (facultatif)
     var hc = hoursCard(p.hours);
-    if (hc) IN(el('section', { 'aria-label': 'Horaires' }, stitle('Horaires'), hc));
+    if (hc) IN(el('section', { 'aria-label': T('Horaires') }, stitle(T('Horaires')), hc));
 
     // Réseaux (grille)
     var socials = [];
     SOCIALS.forEach(function (s) { var u = socialUrl(p[s[0]], s[2]); if (u) socials.push([u, s[0], s[1]]); });
     if (socials.length) {
       var cols = Math.min(4, socials.length);
-      var grid = el('nav', { class: 'sgrid', 'aria-label': 'Réseaux sociaux', style: '--cols:' + cols + (socials.length < 4 ? ';--maxw:' + (cols * 102) + 'px' : '') });
+      var grid = el('nav', { class: 'sgrid', 'aria-label': T('Réseaux sociaux'), style: '--cols:' + cols + (socials.length < 4 ? ';--maxw:' + (cols * 102) + 'px' : '') });
       socials.forEach(function (s) { grid.appendChild(link(s[0], { class: 'stile', 'aria-label': s[2] }, icon(s[1]), el('span', { 'aria-hidden': 'true' }, s[2]))); });
-      IN(el('section', null, stitle('Réseaux'), grid));
+      IN(el('section', null, stitle(T('Réseaux')), grid));
     }
 
     // Liens personnalisés
@@ -1126,16 +1217,16 @@ a.badge{transition:background .3s var(--ease)}
       if (!u) return;
       var label = typeof o === 'string' ? '' : str(o.label);
       var ic = (typeof o === 'object' && ICONS[str(o.icon)]) ? str(o.icon) : 'link';
-      others.push([u, ic, label || host(u), label ? host(u) : 'Ouvrir le lien']);
+      others.push([u, ic, label || host(u), label ? host(u) : T('Ouvrir le lien')]);
     });
-    if (others.length) IN(el('section', { 'aria-label': 'Liens' }, stitle('Liens'), rowsCard(others)));
+    if (others.length) IN(el('section', { 'aria-label': T('Liens') }, stitle(T('Liens')), rowsCard(others)));
 
     // Partage + QR
-    var sh = el('button', { class: 'ghost', type: 'button' }, icon('share'), el('span', null, 'Partager'));
+    var sh = el('button', { class: 'ghost', type: 'button' }, icon('share'), el('span', null, T('Partager')));
     sh.addEventListener('click', function () { share(name, profession, url); });
     var foot = el('div', { class: 'foot' }, sh);
     if (brand.showQr !== false) {
-      var qb = el('button', { class: 'ghost', type: 'button', 'aria-haspopup': 'dialog' }, icon('qr'), el('span', null, 'QR code'));
+      var qb = el('button', { class: 'ghost', type: 'button', 'aria-haspopup': 'dialog' }, icon('qr'), el('span', null, T('QR code')));
       qb.addEventListener('click', function () { openQr(name, url, slug); });
       foot.appendChild(qb);
     }
@@ -1179,6 +1270,30 @@ a.badge{transition:background .3s var(--ease)}
       'Le fichier config.js n\u2019a pas pu être lu. Il doit se trouver dans le même dossier que index.html et définir BRAND et PROFILES.');
   }
 
+  /* ---------- Profils bilingues : i18n: { en: { …champs traduits… } } ---------- */
+  function renderLocalized(p, slug) {
+    var tr = (p.i18n && typeof p.i18n === 'object') ? p.i18n : null;
+    if (!tr) { LANG = 'fr'; return renderProfile(p, slug); }
+    var base = str(p.lang) || 'fr', langs = [base].concat(Object.keys(tr).filter(function (k) { return k !== base; }));
+    var pick = '';
+    try { pick = (new URLSearchParams(location.search).get('lang') || '').toLowerCase(); } catch (e) {}
+    if (langs.indexOf(pick) < 0) { try { pick = localStorage.getItem('vt-lang-' + slug) || ''; } catch (e) { pick = ''; } }
+    if (langs.indexOf(pick) < 0) {
+      var nav = str((navigator.languages && navigator.languages[0]) || navigator.language).toLowerCase().slice(0, 2);
+      pick = langs.indexOf(nav) >= 0 ? nav : (langs.indexOf('en') >= 0 ? 'en' : base);
+    }
+    function show(l) {
+      LANG = l;
+      try { localStorage.setItem('vt-lang-' + slug, l); } catch (e) {}
+      document.documentElement.setAttribute('lang', l);
+      var q = {}; Object.keys(p).forEach(function (k) { q[k] = p[k]; });
+      if (l !== base && tr[l]) Object.keys(tr[l]).forEach(function (k) { q[k] = tr[l][k]; });
+      q.__langs = langs; q.__switch = function (n) { show(n); window.scrollTo(0, 0); };
+      renderProfile(q, slug);
+    }
+    show(pick);
+  }
+
   /* ---------- Démarrage ---------- */
   function init() {
     readBrand();
@@ -1189,10 +1304,10 @@ a.badge{transition:background .3s var(--ease)}
     var index = buildIndex(PROFILES), slug = getSlug();
     if (!slug) {
       var hs = normSlug(brand.homeSlug);
-      if (hs && index[hs]) return renderProfile(index[hs], hs);
+      if (hs && index[hs]) return renderLocalized(index[hs], hs);
       return renderHome();
     }
-    if (index[slug]) renderProfile(index[slug], slug);
+    if (index[slug]) renderLocalized(index[slug], slug);
     else renderNotFound();
   }
   function start() {

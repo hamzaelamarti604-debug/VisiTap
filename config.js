@@ -253,6 +253,124 @@ const PROFILES = [
   },
 
   {
+    // YOUSSEF MANSOURI — vraie carte client, ne pas supprimer — Authentic Morocco by Mansouri (Casa Transfer + Casablanca Travel Experience) — profil bilingue FR / EN
+    slug: "youssef-mansouri",
+    firstName: "Youssef",
+    lastName: "Mansouri",
+    profession: "Tour Planner & Transport Services",
+    company: "Fondateur · Authentic Morocco by Mansouri",
+    photo: "/photos/youssef-mansouri.jpg",
+    description: "Transferts privés, chauffeur VIP et circuits sur mesure à Casablanca et dans tout le Maroc. Plus de 11 ans d'expérience au service des voyageurs du monde entier.",
+
+    phone: "+212 660 604 600",
+    email: "mansouriyoussef305@gmail.com",
+    address: "Aéroport Mohammed V · Casablanca",
+    mapsUrl: "https://maps.app.goo.gl/s2nxMjSiPzUyQBrL6",
+
+    whatsapp: "+212660604600",
+    whatsappLabel: "Planifier mon voyage",
+    whatsappSubtitle: "Réponse rapide sur WhatsApp",
+    whatsappMessage: "Bonjour Youssef, je souhaite organiser un voyage.\nDate : \nNombre de personnes : \nLieu de prise en charge : \nService (transfert, circuit, expérience) : ",
+    primaryAction: "whatsapp",
+    waRow: true,
+    waRowSubtitle: "+212 660 604 600",
+    servicesTitle: "Contact",
+    saveSubtitle: "Enregistrer le numéro dans votre téléphone",
+    actions: [
+      { label: "Telegram", sub: "+212 631 27 12 26", url: "https://t.me/+212631271226", icon: "telegram" }
+    ],
+    website: "",
+    googleReviewsUrl: "https://g.page/r/CUBEyAenpuWIEBE/review",
+
+    companiesTitle: "Nos entreprises",
+    companies: [
+      { name: "Casa Transfer", logo: "/photos/casa-transfer-logo.png", url: "https://casatransfer.com",
+        text: "Transferts privés et chauffeur VIP depuis l'aéroport Mohammed V (CMN), à Casablanca et dans tout le Maroc.",
+        tags: ["Accueil à l'aéroport", "Chauffeur privé", "Excursions", "24h/24 · 7j/7"] },
+      { name: "Casablanca Travel Experience", logo: "/photos/casablanca-travel-experience-logo.png", url: "https://casablancatravelexperience.com",
+        text: "Visites privées de Casablanca, circuits d'escale et expériences culinaires avec un guide local.",
+        tags: ["Visite d'escale", "Cours de cuisine", "Hammam", "Visite gastronomique"] }
+    ],
+
+    badgesTitle: "En chiffres",
+    badges: [
+      { label: "11+ ans", sub: "d'expérience", icon: "trophy" },
+      { label: "5.0 ★", sub: "plus de 450 avis", icon: "star" },
+      { label: "24h/24", sub: "7 jours sur 7", icon: "clock" },
+      { label: "100 % privé", sub: "aucun frais caché", icon: "shield" }
+    ],
+    fleetTitle: "Notre flotte",
+    fleet: [
+      { img: "/photos/ym-skoda.jpg", label: "Berline d'affaires", sub: "Skoda Superb · 1 à 3 pers." },
+      { img: "/photos/ym-classe-e.jpg", label: "Berline VIP", sub: "Mercedes Classe E" },
+      { img: "/photos/ym-vito.jpg", label: "Van VIP", sub: "Mercedes Vito · 7 places" },
+      { img: "/photos/ym-sprinter.jpg", label: "Minibus VIP", sub: "Sprinter · 17 places" }
+    ],
+    chipGroups: [
+      { title: "Destinations", items: ["Casablanca", "Rabat", "Fès", "Chefchaouen", "Marrakech", "Essaouira", "Atlas", "Merzouga & Sahara", "Tanger"] },
+      { title: "Paiement", items: ["Espèces", "Carte bancaire / TPE", "PayPal", "Virement", "Lien de paiement"] }
+    ],
+    stepsTitle: "Comment réserver",
+    steps: [
+      { title: "Choisissez votre service", text: "Transfert aéroport, chauffeur privé, visite de la ville, circuit au Maroc ou expérience culinaire." },
+      { title: "Envoyez vos détails", text: "Date, horaires de vol, nombre de personnes, lieu de prise en charge et demandes particulières." },
+      { title: "Recevez la confirmation", text: "Itinéraire et prix clair par WhatsApp ou e-mail. Réservez maintenant, payez à votre arrivée." }
+    ],
+
+    instagram: "authentic_morocco_by_mansouri", facebook: "https://www.facebook.com/share/1JUciKMKK5/", tiktok: "casatransfertaxi", linkedin: "", youtube: "", x: "", pinterest: "", snapchat: "",
+    otherSocials: [],
+    theme: "ivoire",
+
+    lang: "fr",
+    i18n: {
+      en: {
+        profession: "Tour Planner & Transport Services",
+        company: "Founder · Authentic Morocco by Mansouri",
+        description: "Private transfers, VIP chauffeur and tailor-made tours in Casablanca and across Morocco. Over 11 years of experience welcoming travellers from all over the world.",
+        address: "Mohammed V Airport · Casablanca",
+        whatsappLabel: "Plan my trip",
+        whatsappSubtitle: "Quick reply on WhatsApp",
+        whatsappMessage: "Hello Youssef, I would like to plan a trip.\nDate: \nNumber of travellers: \nPick-up location: \nService (transfer, tour, experience): ",
+        servicesTitle: "Contact",
+        saveSubtitle: "Save the number to your phone",
+        companiesTitle: "Our companies",
+        companies: [
+          { name: "Casa Transfer", logo: "/photos/casa-transfer-logo.png", url: "https://casatransfer.com",
+            text: "Private transfers and VIP chauffeur service from Mohammed V Airport (CMN), in Casablanca and across Morocco.",
+            tags: ["Airport meet & greet", "Private driver", "Day trips", "24/7"] },
+          { name: "Casablanca Travel Experience", logo: "/photos/casablanca-travel-experience-logo.png", url: "https://casablancatravelexperience.com",
+            text: "Private Casablanca tours, layover tours and food experiences with a local guide.",
+            tags: ["Layover tour", "Cooking class", "Hammam", "Food tour"] }
+        ],
+        badgesTitle: "Key figures",
+        badges: [
+          { label: "11+ years", sub: "of experience", icon: "trophy" },
+          { label: "5.0 ★", sub: "450+ reviews", icon: "star" },
+          { label: "24/7", sub: "every day", icon: "clock" },
+          { label: "100% private", sub: "no hidden fees", icon: "shield" }
+        ],
+        fleetTitle: "Our fleet",
+        fleet: [
+          { img: "/photos/ym-skoda.jpg", label: "Business sedan", sub: "Skoda Superb · 1 to 3 pax" },
+          { img: "/photos/ym-classe-e.jpg", label: "VIP sedan", sub: "Mercedes E-Class" },
+          { img: "/photos/ym-vito.jpg", label: "VIP van", sub: "Mercedes Vito · 7 seats" },
+          { img: "/photos/ym-sprinter.jpg", label: "VIP minibus", sub: "Sprinter · 17 seats" }
+        ],
+        chipGroups: [
+          { title: "Destinations", items: ["Casablanca", "Rabat", "Fes", "Chefchaouen", "Marrakech", "Essaouira", "Atlas Mountains", "Merzouga & Sahara", "Tangier"] },
+          { title: "Payment", items: ["Cash", "Credit / debit card", "PayPal", "Bank transfer", "Payment link"] }
+        ],
+        stepsTitle: "How to book",
+        steps: [
+          { title: "Choose your service", text: "Airport transfer, private driver, city tour, Morocco tour or food experience." },
+          { title: "Send your details", text: "Date, flight times, number of travellers, pick-up location and any special requests." },
+          { title: "Get your confirmation", text: "Clear itinerary and price by WhatsApp or email. Book now, pay on arrival." }
+        ]
+      }
+    }
+  },
+
+  {
     // MEHDI DELIVERY (Casablanca) — livreur / coursier — vraie carte client, ne pas supprimer
     slug: "mehdi-delivery",
     firstName: "Mehdi",
