@@ -253,6 +253,57 @@ const PROFILES = [
   },
 
   {
+    // YASSINE SADIK (Settat) — aménagement & décoration d'intérieur — vraie carte client, ne pas supprimer
+    slug: "yassine-sadik",
+    firstName: "Yassine",
+    lastName: "Sadik",
+    profession: "Aménagement & décoration d'intérieur",
+    company: "",
+    photo: "/photos/yassine-sadik.jpg",
+    description: "Aménagement et décoration d'intérieur à Settat et ses environs : salons, chambres, cuisines et espaces professionnels. Un accompagnement complet, de l'idée jusqu'aux finitions, pour des intérieurs modernes et soignés.",
+
+    phone: "+212 6 90 10 99 45",
+    email: "",
+    address: "Settat",
+    mapsUrl: "",
+
+    whatsapp: "+212690109945",
+    whatsappLabel: "Demander un devis",
+    whatsappSubtitle: "Réponse rapide sur WhatsApp",
+    whatsappMessage: "Bonjour Yassine, je souhaite un devis pour l'aménagement de mon intérieur.\nVille : \nType de travaux : \nSurface approximative : ",
+    primaryAction: "whatsapp",
+    servicesTitle: "Contact",
+    saveSubtitle: "Enregistrer le numéro dans votre téléphone",
+    website: "",
+    googleReviewsUrl: "",
+
+    galleryTitle: "Nos réalisations",
+    gallery: [
+      { src: "/photos/yassine/1.jpg", caption: "Salon & plafond lumineux" },
+      { src: "/photos/yassine/2.jpg", caption: "Éclairage indirect" },
+      { src: "/photos/yassine/3.jpg", caption: "Lignes lumineuses croisées" },
+      { src: "/photos/yassine/4.jpg", caption: "Cuisine ouverte & lignes LED" },
+      { src: "/photos/yassine/5.jpg", caption: "Caisson lumineux" },
+      { src: "/photos/yassine/6.jpg", caption: "Couloir & corniches LED" },
+      { src: "/photos/yassine/7.jpg", caption: "Caissons & spots" },
+      { src: "/photos/yassine/8.jpg", caption: "Faux plafond modulaire" },
+      { src: "/photos/yassine/9.jpg", caption: "Chantier en cours" }
+    ],
+
+    badgesTitle: "Nos services",
+    badges: [
+      { label: "Aménagement complet", sub: "De l'idée aux finitions", icon: "home" },
+      { label: "Décoration intérieure", sub: "Matières, couleurs, ambiance", icon: "sparkle" },
+      { label: "Faux plafonds & éclairage", sub: "Caissons, LED indirect", icon: "bolt" },
+      { label: "Habillage mural", sub: "Moulures, meubles TV", icon: "tool" }
+    ],
+
+    instagram: "yassinesadik5", facebook: "", tiktok: "", linkedin: "", youtube: "", x: "", pinterest: "", snapchat: "",
+    otherSocials: [],
+    theme: "noir"
+  },
+
+  {
     // DR.PHONES (Tanger) — Anass Benachir, réparation mobile — vraie carte client, ne pas supprimer
     slug: "dr-phones",
     firstName: "Dr.phones",
