@@ -253,6 +253,92 @@ const PROFILES = [
   },
 
   {
+    // GHALI BARIK-ALALLAH (Dakhla) — chauffeur professionnel & agent de sécurité privée — vraie carte client, ne pas supprimer — profil bilingue FR / AR
+    slug: "ghali-barik-alallah",
+    firstName: "Ghali",
+    lastName: "Barik-Alallah",
+    nameAr: "غالي بارك الله",
+    profession: "Chauffeur professionnel · Agent de sécurité privée",
+    company: "Basé à Dakhla",
+    photo: "/photos/ghali-barik-alallah.jpg",
+    description: "Chauffeur professionnel depuis 2015, titulaire des permis B et D, et agent de sécurité privée avec 7 ans d'expérience. Conduite sûre, ponctualité et accueil professionnel.",
+
+    phone: "+212 6 55 27 17 30",
+    phone2: "+212 6 72 42 14 20",
+    email: "",
+    address: "Dakhla, Maroc",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Dakhla%2C%20Maroc",
+
+    whatsapp: "+212655271730",
+    whatsappLabel: "WhatsApp",
+    whatsappSubtitle: "Écrire un message",
+    whatsappMessage: "Bonjour Ghali, ",
+    servicesTitle: "Contact",
+    actions: [
+      { label: "Deuxième numéro", sub: "+212 6 72 42 14 20", url: "tel:+212672421420", icon: "phone" }
+    ],
+    website: "",
+
+    badgesTitle: "En bref",
+    badges: [
+      { label: "Depuis 2015", sub: "chauffeur professionnel", icon: "wheel" },
+      { label: "7 ans", sub: "agent de sécurité privée", icon: "shield" },
+      { label: "Permis B · D", sub: "véhicules légers et transport de voyageurs", icon: "car" },
+      { label: "Bac +2", sub: "niveau d'études", icon: "grad" }
+    ],
+    companiesTitle: "Expérience",
+    companies: [
+      { name: "Chauffeur professionnel", text: "Depuis 2015. Conduite de véhicules légers (permis B depuis 2015) et de minibus de transport de voyageurs et de personnel (permis D depuis 2026).",
+        tags: ["Conduite sûre et maîtrisée", "Ponctualité", "Bonne connaissance des routes", "Contrôle quotidien du véhicule", "Accueil des passagers", "Respect du code de la route"] },
+      { name: "Agent de sécurité privée", text: "7 ans d'expérience. Surveillance et sécurisation des sites, des biens et des personnes, avec un contrôle rigoureux des entrées et sorties.",
+        tags: ["Rondes de surveillance", "Prévention des risques", "Intervention rapide en cas d'urgence", "Accueil et orientation des visiteurs", "Rapports et registre de garde"] }
+    ],
+    chipGroups: [
+      { title: "Langues", items: ["Arabe · langue maternelle", "Français · intermédiaire", "Anglais · notions de base"] }
+    ],
+
+    instagram: "", facebook: "", tiktok: "", linkedin: "", youtube: "", x: "", pinterest: "", snapchat: "",
+    otherSocials: [],
+    theme: "nuit",
+
+    lang: "fr",
+    i18n: {
+      ar: {
+        firstName: "غالي",
+        lastName: "بارك الله",
+        nameAr: "Ghali Barik-Alallah",
+        profession: "سائق مهني · حارس أمن خاص",
+        company: "مقيم بمدينة الداخلة",
+        description: "سائق مهني منذ 2015، حاصل على رخصة السياقة صنف B وصنف D، وحارس أمن خاص بخبرة 7 سنوات. سياقة آمنة، التزام بالمواعيد وتعامل باحترافية.",
+        address: "الداخلة، المغرب",
+        whatsappSubtitle: "أرسل رسالة",
+        whatsappMessage: "السلام عليكم غالي، ",
+        servicesTitle: "تواصل معي",
+        actions: [
+          { label: "الرقم الثاني", sub: "+212 6 72 42 14 20", url: "tel:+212672421420", icon: "phone" }
+        ],
+        badgesTitle: "باختصار",
+        badges: [
+          { label: "منذ 2015", sub: "سائق مهني", icon: "wheel" },
+          { label: "7 سنوات", sub: "حارس أمن خاص", icon: "shield" },
+          { label: "رخصة B · D", sub: "سيارات خفيفة ونقل الركاب", icon: "car" },
+          { label: "باك +2", sub: "المستوى الدراسي", icon: "grad" }
+        ],
+        companiesTitle: "الخبرة المهنية",
+        companies: [
+          { name: "سائق مهني", text: "منذ 2015. سياقة السيارات الخفيفة (صنف B منذ 2015) وحافلات نقل الركاب والمستخدمين (صنف D منذ 2026).",
+            tags: ["سياقة آمنة ومنضبطة", "الالتزام التام بالمواعيد", "معرفة جيدة بالطرق والمسارات", "المراقبة اليومية للمركبة", "حسن استقبال الركاب", "احترام قانون السير"] },
+          { name: "حارس أمن خاص", text: "خبرة 7 سنوات. حراسة وتأمين المنشآت والممتلكات والأشخاص، ومراقبة عمليات الدخول والخروج بدقة.",
+            tags: ["جولات تفقدية منتظمة", "الوقاية من المخاطر", "التدخل السريع في الحالات الطارئة", "استقبال وتوجيه الزوار", "التقارير اليومية في سجل الحراسة"] }
+        ],
+        chipGroups: [
+          { title: "اللغات", items: ["العربية · اللغة الأم", "الفرنسية · مستوى متوسط", "الإنجليزية · مستوى مبتدئ"] }
+        ]
+      }
+    }
+  },
+
+  {
     // YASSINE SADIK (Settat) — aménagement & décoration d'intérieur — vraie carte client, ne pas supprimer
     slug: "yassine-sadik",
     firstName: "Yassine",

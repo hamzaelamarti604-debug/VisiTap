@@ -339,6 +339,23 @@ a.badge{transition:background .3s var(--ease)}
 .lang{display:inline-flex;padding:3px;border-radius:999px;border:1px solid var(--line-strong);background:rgba(var(--ink-rgb),.03)}
 .lang button{min-width:38px;padding:5px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--muted)}
 .lang button[aria-pressed="true"]{background:var(--gold-grad);color:var(--on-gold)}
+.lang button[lang="ar"]{font-family:"Cairo","Noto Kufi Arabic",var(--arabic);letter-spacing:0;font-size:12.5px;padding:3px 10px}
+/* Version arabe (profils bilingues avec i18n.ar) : écriture de droite à gauche */
+html[dir="rtl"]{--sans:"Cairo","Noto Kufi Arabic","Geeza Pro",system-ui,sans-serif;--serif:"Cairo","Noto Kufi Arabic","Geeza Pro",serif}
+html[dir="rtl"] body *{letter-spacing:0!important}
+html[dir="rtl"] .wordmark,html[dir="rtl"] .wordmark *{letter-spacing:.24em!important}
+html[dir="rtl"] .name{font-weight:700;font-size:clamp(32px,9.5vw,40px);line-height:1.5;padding:0 .1em .12em;margin-top:-.15em}
+html[dir="rtl"] .signature .tag{direction:ltr}
+html[dir="rtl"] .row .ra svg{transform:scaleX(-1)}
+html[dir="rtl"] .name-ar{font-family:var(--serif);font-size:24px}
+html[dir="rtl"] .role{font-size:13.5px}
+html[dir="rtl"] .company{font-style:normal;font-size:16px}
+html[dir="rtl"] .stitle{font-size:13px}
+html[dir="rtl"] .rv .rv-l{font-size:12px}
+html[dir="rtl"] .rv .rv-v,html[dir="rtl"] .row .rs{text-align:right}
+html[dir="rtl"] .row + .row::before{left:16px;right:70px}
+html[dir="rtl"] button.row{text-align:right}
+html[dir="rtl"] .hours .ht{text-align:left}
 /* Entreprises du groupe */
 .cos{display:flex;flex-direction:column;gap:12px}
 .co{padding:16px;border-radius:20px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(var(--ink-rgb),.045),rgba(var(--ink-rgb),.018));box-shadow:var(--shadow)}
@@ -442,6 +459,9 @@ a.badge{transition:background .3s var(--ease)}
   ICONS.trophy = '<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7M10 17h4v3h-4z"/>';
   ICONS.compass = '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>';
   ICONS.telegram = '<path d="M21.5 3.5 2.8 10.7c-.9.4-.9 1.6 0 1.9l4.6 1.6 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.5 4.6 3.4c.6.4 1.4.1 1.6-.6L22.9 5c.2-1-.6-1.8-1.4-1.5z"/><path d="M7.4 14.2 18 7.2l-8 8.3"/>';
+  ICONS.wheel = '<circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="12" r="2.4"/><path d="M12 14.4v7M9.7 11.3 2.9 9.4M14.3 11.3l6.8-1.9"/>';
+  ICONS.grad = '<path d="M2 9.5 12 5l10 4.5L12 14z"/><path d="M6 11.3v4.2c0 1.4 2.7 2.8 6 2.8s6-1.4 6-2.8v-4.2M22 9.5v5"/>';
+  ICONS.lang = '<path d="M4 5h9M8.5 3v2M6 5c.6 3.4 2.8 6.2 6 7.6M11 5c-.8 3.6-3.4 6.6-7 8"/><path d="m12 21 4.5-10 4.5 10M13.6 17.5h5.8"/>';
   ICONS.touch = '<path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V9a1.5 1.5 0 0 1 3 0v2"/><path d="M15 10.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-.5a6 6 0 0 1-4.9-2.5L4.2 15a1.5 1.5 0 0 1 2.4-1.8L9 15"/>';
 
   var SOCIALS = [
@@ -486,7 +506,23 @@ a.badge{transition:background .3s var(--ease)}
     'QR code indisponible.': 'QR code unavailable.', 'Faites glisser pour voir plus →': 'Swipe to see more →',
     'Nos entreprises': 'Our companies', 'Notre flotte': 'Our fleet', 'Visiter le site': 'Visit website', 'Photo de ': 'Photo of '
   };
-  function T(s) { return LANG === 'en' && UI_EN[s] ? UI_EN[s] : s; }
+  var UI_AR = {
+    'Ajouter aux contacts': 'إضافة إلى جهات الاتصال', 'Enregistrer le numéro dans votre téléphone': 'حفظ الرقم في هاتفك',
+    'Écrire un message': 'أرسل رسالة', 'Site web': 'الموقع الإلكتروني', 'Avis Google': 'تقييمات Google',
+    'Consulter ou laisser un avis': 'اطّلع على التقييمات أو أضف تقييمك', 'Services': 'الخدمات', 'Galerie': 'معرض الصور',
+    'Étapes': 'المراحل', 'Comment commander': 'كيفية الطلب', 'Nos garanties': 'ضماناتنا', 'Infos': 'معلومات',
+    'Horaires': 'أوقات العمل', 'Réseaux': 'الشبكات الاجتماعية', 'Réseaux sociaux': 'الشبكات الاجتماعية', 'Liens': 'روابط',
+    'Ouvrir le lien': 'فتح الرابط', 'Partager': 'مشاركة', 'QR code': 'رمز QR', 'Téléphone': 'الهاتف', 'E-mail': 'البريد الإلكتروني',
+    'Adresse': 'العنوان', 'Appeler': 'اتصال', 'Écrire': 'مراسلة', 'Maps': 'الخريطة', 'Voir sur la carte': 'عرض على الخريطة',
+    'Touchez une icône pour afficher la coordonnée': 'المس أيقونة لعرض معلومات الاتصال',
+    'Touchez l\u2019icône pour afficher la coordonnée': 'المس الأيقونة لعرض معلومات الاتصال',
+    'Afficher : ': 'عرض: ', 'Coordonnées': 'معلومات الاتصال', 'Copié': 'تم النسخ', 'Lien copié': 'تم نسخ الرابط',
+    'Fiche contact téléchargée': 'تم تنزيل بطاقة الاتصال', 'Impossible de créer la fiche contact': 'تعذّر إنشاء بطاقة الاتصال',
+    'Scanner pour ouvrir la carte': 'امسح الرمز لفتح البطاقة', 'Télécharger': 'تنزيل', 'Fermer': 'إغلاق',
+    'QR code indisponible.': 'رمز QR غير متوفر.', 'Faites glisser pour voir plus →': '← اسحب لرؤية المزيد',
+    'Nos entreprises': 'شركاتنا', 'Notre flotte': 'أسطولنا', 'Visiter le site': 'زيارة الموقع', 'Photo de ': 'صورة '
+  };
+  function T(s) { return LANG === 'en' && UI_EN[s] ? UI_EN[s] : (LANG === 'ar' && UI_AR[s] ? UI_AR[s] : s); }
   function el(tag, props) {
     var n = document.createElement(tag);
     if (props) Object.keys(props).forEach(function (k) {
@@ -839,6 +875,8 @@ a.badge{transition:background .3s var(--ease)}
     if (str(p.profession)) L.push('TITLE:' + vEsc(p.profession));
     var tel = cleanTel(p.phone);
     if (tel) L.push('TEL;TYPE=CELL,VOICE:' + tel);
+    var tel2 = cleanTel(p.phone2);
+    if (tel2 && tel2 !== tel) L.push('TEL;TYPE=CELL,VOICE:' + tel2);
     var wa = waDigits(p.whatsapp);
     if (wa && !/^https?:/i.test(str(p.whatsapp)) && wa !== tel.replace(/\D/g, '') && wa !== waDigits(p.phone)) L.push('TEL;TYPE=CELL:+' + wa);
     if (emailHref(p.email)) L.push('EMAIL;TYPE=INTERNET,WORK:' + str(p.email));
@@ -938,7 +976,7 @@ a.badge{transition:background .3s var(--ease)}
 
     items.forEach(function (it, i) {
       var panel = link(it.href, { class: 'rv', 'aria-label': it.action + ' — ' + it.value, tabindex: '-1', 'aria-hidden': 'true' },
-        el('span', { class: 'rv-t' }, el('span', { class: 'rv-l' }, it.label), el('span', { class: 'rv-v' }, it.value)),
+        el('span', { class: 'rv-t' }, el('span', { class: 'rv-l' }, it.label), el('span', { class: 'rv-v', dir: 'auto' }, it.value)),
         el('span', { class: 'rv-a' }, icon(it.aic), it.action));
       reveal.appendChild(panel); panels.push(panel);
       var b = el('button', { class: 'cbtn', type: 'button', 'aria-expanded': 'false', 'aria-controls': uid, 'aria-label': T('Afficher : ') + it.label, title: it.label }, icon(it.ic));
@@ -963,7 +1001,7 @@ a.badge{transition:background .3s var(--ease)}
     rows.forEach(function (r) {
       var parts = [
         el('span', { class: 'ri' }, icon(r[1])),
-        el('span', { class: 'rt' }, el('span', { class: 'rl' }, r[2]), el('span', { class: 'rs' }, r[3])),
+        el('span', { class: 'rt' }, el('span', { class: 'rl' }, r[2]), el('span', { class: 'rs', dir: 'auto' }, r[3])),
         el('span', { class: 'ra' }, icon('arrow'))];
       if (typeof r[0] === 'function') {
         // Ligne-bouton (ouvre une fenêtre au lieu d'un lien)
@@ -1057,6 +1095,10 @@ a.badge{transition:background .3s var(--ease)}
     });
     return n ? grid : null;
   }
+  function loadArabicUiFont() {
+    if (document.getElementById('font-ar-ui')) return;
+    document.head.appendChild(el('link', { id: 'font-ar-ui', rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap' }));
+  }
   function loadArabicFont() {
     if (document.getElementById('font-ar')) return;
     var l = el('link', { id: 'font-ar', rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap' });
@@ -1079,7 +1121,7 @@ a.badge{transition:background .3s var(--ease)}
     if (langs.length > 1) {
       var sw = el('div', { class: 'lang', role: 'group', 'aria-label': 'Language' });
       langs.forEach(function (l) {
-        var b = el('button', { type: 'button', 'aria-pressed': String(l === LANG), lang: l }, l.toUpperCase());
+        var b = el('button', { type: 'button', 'aria-pressed': String(l === LANG), lang: l }, l === 'ar' ? 'عربي' : l.toUpperCase());
         b.addEventListener('click', function () { if (l !== LANG && p.__switch) p.__switch(l); });
         sw.appendChild(b);
       });
@@ -1286,6 +1328,8 @@ a.badge{transition:background .3s var(--ease)}
       LANG = l;
       try { localStorage.setItem('vt-lang-' + slug, l); } catch (e) {}
       document.documentElement.setAttribute('lang', l);
+      if (l === 'ar') { document.documentElement.setAttribute('dir', 'rtl'); loadArabicUiFont(); }
+      else document.documentElement.removeAttribute('dir');
       var q = {}; Object.keys(p).forEach(function (k) { q[k] = p[k]; });
       if (l !== base && tr[l]) Object.keys(tr[l]).forEach(function (k) { q[k] = tr[l][k]; });
       q.__langs = langs; q.__switch = function (n) { show(n); window.scrollTo(0, 0); };
